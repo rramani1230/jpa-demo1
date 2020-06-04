@@ -32,37 +32,37 @@ import org.slf4j.LoggerFactory;
 	"logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE", // display prepared statement parameters
 	"spring.jpa.properties.hibernate.format_sql=true",
 	"spring.jpa.show-sql=false",   // prevent duplicate logging
-	"spring.jpa.properties.hibernate.show_sql=false",	
-	
+	"spring.jpa.properties.hibernate.show_sql=false",
+
 	"logging.pattern.console= %d{yyyy-MM-dd HH:mm:ss} - %msg%n"
 })
 @TestMethodOrder(OrderAnnotation.class)
 public class Demo0 {
 
     private final static Logger log = LoggerFactory.getLogger(Demo0.class);
-    
+
     @Autowired
     private PersonRepository personRepository;
 
     private final Person person = new Person("test", "test", "test@calpoly.edu");  // "reference" person
-    
+
     @BeforeEach
     private void setup() {
 	personRepository.saveAndFlush(person);
     }
-    
+
     @Test
     @Order(1)
     public void testSavePerson() {
 	Person person2 = personRepository.findByFirstName("test");
 
 	log.info(person2.toString());
-	
+
 	assertNotNull(person);
 	assertEquals(person2.getFirstName(), person.getFirstName());
 	assertEquals(person2.getLastName(), person.getLastName());
     }
-    
+
     @Test
     @Order(2)
     public void testGetPerson() {
@@ -78,13 +78,13 @@ public class Demo0 {
 	personRepository.delete(person);
 	personRepository.flush();
     }
-    
+
     @Test
     @Order(4)
     public void testFindAllPersons() {
 	assertNotNull(personRepository.findAll());
     }
-    
+
     @Test
     @Order(5)
     public void testDeletByPersonId() {

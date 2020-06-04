@@ -31,26 +31,27 @@ public class Address {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "person_id", nullable = true)
     private Person person;
-    
+
     public Address() { }
-    
+
     public Address(String street, String city, String state, String zipCode) {
 	this.street = street;
 	this.city = city;
 	this.state = state;
 	this.zipCode = zipCode;
     }
-    
+
     public Long getId() {
 	return id;
     }
     public void setId(Long id) {
 	this.id = id;
     }
-    
+
     public String getStreet() {
 	return street;
     }
+
     public void setStreet(String street) {
 	this.street = street;
     }
@@ -82,7 +83,7 @@ public class Address {
     public void setPerson(Person person) {
 	this.person = person;
     }
-        
+
     @Override
     public String toString()
     {
@@ -102,5 +103,5 @@ public class Address {
     public int hashCode() {
 	return 366;
     }
-    
+
 }

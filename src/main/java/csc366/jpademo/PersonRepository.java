@@ -21,7 +21,7 @@ public interface PersonRepository extends JpaRepository<Person, Long>{
     // JPQL query with join
     @Query("select p from Person p join p.addresses addr where p.firstName = :name or p.lastName = :name")
     Person findByNameWithAddressJpql(@Param("name") String name);
-    
+
     // Native SQL query  (validity not checked, invalid SQL will cause runtime exception)
     @Query(value = "select * from person as p where p.first_name = :name or p.last_name = :name", nativeQuery = true)
     Person findByNameSql(@Param("name") String name);
@@ -29,7 +29,6 @@ public interface PersonRepository extends JpaRepository<Person, Long>{
     @Modifying
     @Query("update Person p set p.firstName = :newName where p.firstName = :oldName")
     void updateName(@Param("oldName") String oldName, @Param("newName") String newName);
-    
+
 
 }
-
