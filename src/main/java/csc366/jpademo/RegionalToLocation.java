@@ -41,7 +41,7 @@ public class RegionalToLocation {
 
      public void setLocationManagerId() {
         this.locationManagerId = locationManagerId;
-   }0
+   }
 
 
 }

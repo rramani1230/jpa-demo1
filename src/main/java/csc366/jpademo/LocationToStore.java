@@ -24,7 +24,7 @@ public class LocationToStore {
 
      public LocationToStore (int locationManagerId, int store_id) {
           this.locationManagerId = locationManagerId;
-          this.store_id = store_id;
+          this.storeId = storeId;
      }
 
      public int getLocationManagerId() {

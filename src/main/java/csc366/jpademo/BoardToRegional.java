@@ -36,7 +36,7 @@ public class BoardToRegional {
      }
 
      public int getRegionalManagerId () {
-          this.regionalManagerId = regionalManagerId;
+          return this.regionalManagerId;
      }
 
      public void setRegionalManagerId (int regionalManagerId) {
