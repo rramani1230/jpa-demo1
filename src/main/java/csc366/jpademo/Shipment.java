@@ -62,7 +62,7 @@ public class Shipment {
           return this.quantity;
      }
 
-     public int setQuantity (int quantity) {
+     public void setQuantity (int quantity) {
           this.quantity = quantity;
      }
 
