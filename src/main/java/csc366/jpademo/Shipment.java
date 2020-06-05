@@ -70,7 +70,7 @@ public class Shipment {
           return this.date;
      }
 
-     public setDate (String date) {
+     public void setDate (String date) {
           this.date = date;
      }
 }

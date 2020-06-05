@@ -64,6 +64,6 @@ public class Supplier {
      }
 
      public void setQualityRating (double qualityRating) {
-          thos.qualityRating = qualityRating;
+          this.qualityRating = qualityRating;
      }
 }

@@ -41,7 +41,7 @@ public class Scheduler {
      }
 
      public int getHours () {
-          return this.hours
+          return this.hours;
      }
 
      public void setHours (int hours) {

@@ -21,7 +21,7 @@ import javax.validation.constraints.NotNull;
 public class Receipts {
 
      private int receiptId;
-     private String Date;
+     private String date;
      private int customerId;
      private int itemId;
 
