@@ -17,12 +17,25 @@ import javax.persistence.UniqueConstraint;
 
 import javax.validation.constraints.NotNull;
 
+@Entity
+@Table(name = "CompanyPerson",
+uniqueConstraints = @UniqueConstraint(columnNames={
+     "id", "name", "email", "phoneNo"
+}))
 public class CompanyPerson {
-
+     @Id
+     @GeneratedValue(strategy=GenerationType.IDENTITY)
      private int id;
+
+     @NotNull
      private String name;
+
+     @NotNull
      private String email;
+
      private String dateOfBirth;
+
+     @NotNull
      private String phoneNo;
 
      public CompanyPerson (int id, String name, String email,
@@ -72,5 +85,10 @@ public class CompanyPerson {
 
      public void setPhoneNo (String phoneNo) {
           this.phoneNo = phoneNo;
+     }
+
+     @Override
+     public String toString () {
+          return "Name: " + name;
      }
 }
