@@ -63,48 +63,48 @@ public class Demo0 {
 	assertEquals(person2.getLastName(), person.getLastName());
     }
 
-    @Test
-    @Order(2)
-    public void testGetPerson() {
-	Person person2 = personRepository.findByFirstName("test");
-	assertNotNull(person);
-	assertEquals(person2.getFirstName(), person.getFirstName());
-	assertEquals(person2.getLastName(), person.getLastName());
-    }
-
-    @Test
-    @Order(3)
-    public void testDeletePerson() {
-	personRepository.delete(person);
-	personRepository.flush();
-    }
-
-    @Test
-    @Order(4)
-    public void testFindAllPersons() {
-	assertNotNull(personRepository.findAll());
-    }
-
-    @Test
-    @Order(5)
-    public void testDeletByPersonId() {
-	Person e = personRepository.findByFirstName("test");
-	personRepository.deleteById(e.getId());
-	personRepository.flush();
-    }
-
-    @Test
-    @Order(6)
-    public void testJpqlFinder() {
-	Person e = personRepository.findByNameJpql("test");
-	assertEquals(e.getFirstName(), person.getFirstName());
-    }
-
-    @Test
-    @Order(7)
-    public void testSqlFinder() {
-	Person p = personRepository.findByNameSql("test");
-	assertEquals(p.getFirstName(), person.getFirstName());
-    }
+    // @Test
+    // @Order(2)
+    // public void testGetPerson() {
+	// Person person2 = personRepository.findByFirstName("test");
+	// assertNotNull(person);
+	// assertEquals(person2.getFirstName(), person.getFirstName());
+	// assertEquals(person2.getLastName(), person.getLastName());
+    // }
+    //
+    // @Test
+    // @Order(3)
+    // public void testDeletePerson() {
+	// personRepository.delete(person);
+	// personRepository.flush();
+    // }
+    //
+    // @Test
+    // @Order(4)
+    // public void testFindAllPersons() {
+	// assertNotNull(personRepository.findAll());
+    // }
+    //
+    // @Test
+    // @Order(5)
+    // public void testDeletByPersonId() {
+	// Person e = personRepository.findByFirstName("test");
+	// personRepository.deleteById(e.getId());
+	// personRepository.flush();
+    // }
+    //
+    // @Test
+    // @Order(6)
+    // public void testJpqlFinder() {
+	// Person e = personRepository.findByNameJpql("test");
+	// assertEquals(e.getFirstName(), person.getFirstName());
+    // }
+    //
+    // @Test
+    // @Order(7)
+    // public void testSqlFinder() {
+	// Person p = personRepository.findByNameSql("test");
+	// assertEquals(p.getFirstName(), person.getFirstName());
+    // }
 
 }

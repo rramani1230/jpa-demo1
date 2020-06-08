@@ -4,24 +4,26 @@ import java.util.Set;
 import java.util.HashSet;
 import java.util.StringJoiner;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Column;
-import javax.persistence.ManyToOne;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
 
 import javax.validation.constraints.NotNull;
 
+@Entity
+@Table(name = "Scheduler",
+uniqueConstraints = @UniqueConstraint(columnNames={
+     "employeeId"
+}))
 
 public class Scheduler {
 
+     @Id
+     @NotNull
      private int employeeId;
+
+     @NotNull
      private String week;
+
+     @NotNull
      private int hours;
 
      public int getEmployeeId () {

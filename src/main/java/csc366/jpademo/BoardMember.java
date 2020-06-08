@@ -17,10 +17,13 @@ import javax.persistence.UniqueConstraint;
 
 import javax.validation.constraints.NotNull;
 
-
+@Entity(name="BoardMember")
 public class BoardMember extends CompanyPerson {
 
+     @NotNull
      public String boardStrategy;
+
+     @NotNull
      public boolean hasDegree;
 
      public BoardMember (int id, String name, String email,

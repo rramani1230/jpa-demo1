@@ -4,25 +4,36 @@ import java.util.Set;
 import java.util.HashSet;
 import java.util.StringJoiner;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Column;
-import javax.persistence.ManyToOne;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
 
 import javax.validation.constraints.NotNull;
 
+
+@Entity
+@Table(name = "Shipment",
+uniqueConstraints = @UniqueConstraint(columnNames={
+     "shipmentId"
+}))
+
 public class Shipment {
 
+     @Id
+     @NotNull
+     private int shipmentId;
+
+     @NotNull
      private int supplierId;
+
+     @NotNull
      private int storeId;
+
+     @NotNull
      private int itemId;
+
+     @NotNull
      private int quantity;
+
+     @NotNull
      private String date;
 
      public Shipment (int supplierId, int storeId, int itemId, int quantity,
