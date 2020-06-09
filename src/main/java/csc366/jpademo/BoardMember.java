@@ -1,19 +1,9 @@
 package csc366.jpademo;
 
-import java.util.Set;
-import java.util.HashSet;
-import java.util.StringJoiner;
+import java.util.List;
+import java.util.ArrayList;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Column;
-import javax.persistence.ManyToOne;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
 
 import javax.validation.constraints.NotNull;
 
@@ -21,10 +11,18 @@ import javax.validation.constraints.NotNull;
 public class BoardMember extends CompanyPerson {
 
      @NotNull
-     public String boardStrategy;
+     private String boardStrategy;
 
      @NotNull
-     public boolean hasDegree;
+     private boolean hasDegree;
+
+     // each board member will have a list of 
+     // regional managers that they overlook
+     @OneToMany(mappedBy = "id", // join column (id in RegionalManager)
+               cascade = CascadeType.ALL,
+               orphanRemoval = true,
+               fetch = FetchType.LAZY)
+     private List<RegionalManager> listOfRegManagers = new ArrayList<>();
 
      public BoardMember (int id, String name, String email,
      String dateOfBirth, String phoneNo, String boardStrategy,
@@ -48,5 +46,13 @@ public class BoardMember extends CompanyPerson {
 
      public void setHasDegree (boolean hasDegree) {
           this.hasDegree = hasDegree;
+     }
+
+     public List<RegionalManager> getRegionalManagers() {
+          return this.listOfRegManagers;
+     }
+
+     public void setRegionalManagers(List<RegionalManager> rms) {
+          this.listOfRegManagers = rms;
      }
 }

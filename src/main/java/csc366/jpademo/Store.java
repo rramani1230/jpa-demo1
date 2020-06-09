@@ -26,10 +26,22 @@ public class Store {
      @NotNull
      private String county;
 
+     @ManyToMany(fetch = FetchType.LAZY)
+     private Set<Owner> owners = new HashSet<>();
+
      public Store (int storeId, String address, String county) {
           this.storeId = storeId;
           this.address = address;
           this.county = county;
+     }
+
+     // owners to a store are like shareholders to a stock
+     public void addOwner(Owner owner) {
+          owners.add(owner);
+     }
+
+     public Set<Owner> getOwners() {
+          return this.owners;
      }
 
      public int getStoreId () {

@@ -70,7 +70,7 @@ public abstract class CompanyPerson {
           return this.dateOfBirth;
      }
 
-     public void setDateOfBirth (String DateOfBirth) {
+     public void setDateOfBirth (String dateOfBirth) {
           this.dateOfBirth = dateOfBirth;
      }
 
