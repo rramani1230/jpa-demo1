@@ -28,6 +28,9 @@ public class Store {
 
      @ManyToMany(fetch = FetchType.LAZY)
      private Set<Owner> owners = new HashSet<>();
+ 
+     @OneToOne
+     private LocationManager locationManager;
 
      public Store (int storeId, String address, String county) {
           this.storeId = storeId;
@@ -42,6 +45,14 @@ public class Store {
 
      public Set<Owner> getOwners() {
           return this.owners;
+     }
+   
+     public void setLocationManager(LocationManager lm) {
+          this.locationManager = lm;
+     }
+    
+     public LocationManager getLocationManager() {
+          return this.locationManager;
      }
 
      public int getStoreId () {
