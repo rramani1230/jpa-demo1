@@ -18,6 +18,7 @@ uniqueConstraints = @UniqueConstraint(columnNames={
 
 
 public abstract class CompanyPerson {
+     
      @Id
      @GeneratedValue(strategy = GenerationType.AUTO)
      private int id;

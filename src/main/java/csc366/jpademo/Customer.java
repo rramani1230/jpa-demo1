@@ -18,7 +18,7 @@ public class Customer extends CompanyPerson{
      public int favorite_item;
 
      public Customer (int id, String name, String email,
-     String dateOfBirth, String phoneNo, boolean truck_driver, 
+     String dateOfBirth, String phoneNo, boolean truck_driver,
      int home_store, int favorite_item) {
           super(id,name,email,dateOfBirth,phoneNo);
           this.truck_driver = truck_driver;
@@ -46,7 +46,7 @@ public class Customer extends CompanyPerson{
           return this.favorite_item;
      }
 
-     publix void setFavoriteItem(int favorite_item) {
+     public void setFavoriteItem(int favorite_item) {
           this.favorite_item = favorite_item;
      }
 
