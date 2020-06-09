@@ -24,16 +24,35 @@ public class Receipts {
      private String date;
 
      @NotNull
-     private int customerId;
+     private int custId;
 
      @NotNull
-     private int itemId;
+     private int itemNum;
 
-     public Receipts (int receiptId, String date, int customerId, int itemId) {
+     @NotNull
+     @OneToOne
+     private Customer customer;
+
+     @NotNull
+     @OneToOne
+     private Item item;
+
+     private int storeNum;
+
+     @NotNull
+     @OneToOne
+     private Store store;
+
+     public Receipts (int receiptId, String date, Customer customer,
+      Item item, Store store) {
           this.receiptId = receiptId;
           this.date = date;
-          this.customerId = customerId;
-          this.itemId = itemId;
+          this.customer = customer;
+          this.item = item;
+          this.custId = this.customer.getId();
+          this.itemNum = item.getId();
+          this.store = store;
+          this.storeNum = store.getStoreId();
      }
 
      public int getReceiptId () {
@@ -52,19 +71,51 @@ public class Receipts {
           this.date = date;
      }
 
-     public int getCustomerId () {
-          return this.customerId;
+     public int getcustId () {
+          return this.custId;
      }
 
-     public void setCustomerId (int customerId) {
-          this.customerId = customerId;
+     public void setcustId (int custId) {
+          this.custId = custId;
      }
 
-     public int getItemId () {
-          return this.itemId;
+     public int getitemNum () {
+          return this.itemNum;
      }
 
-     public void setItemId (int itemId) {
-          this.itemId = itemId;
+     public void setitemNum (int itemNum) {
+          this.itemNum = itemNum;
+     }
+
+     public Customer getCustomer () {
+          return this.customer;
+     }
+
+     public void setCustomer (Customer customer) {
+          this.customer = customer;
+     }
+
+     public Item getItem () {
+          return this.item;
+     }
+
+     public void setItem (Item item) {
+          this.item = item;
+     }
+
+     public Store getStore () {
+          return this.store;
+     }
+
+     public void setStore (Store store) {
+          this.store = store;
+     }
+
+     public int getStoreNum () {
+          return this.storeNum;
+     }
+
+     public void setStoreNum (int storeNum) {
+          this.storeNum = storeNum;
      }
 }

@@ -11,14 +11,18 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "Scheduler",
 uniqueConstraints = @UniqueConstraint(columnNames={
-     "employeeId"
+     "employeeNum"
 }))
 
 public class Scheduler {
 
      @Id
      @NotNull
-     private int employeeId;
+     private int employeeNum;
+
+     @NotNull
+     @OneToOne
+     private Employee employee;
 
      @NotNull
      private String week;
@@ -26,12 +30,27 @@ public class Scheduler {
      @NotNull
      private int hours;
 
-     public int getEmployeeId () {
-          return this.employeeId;
+     public Scheduler (Employee employee, String week, int hours) {
+          this.employee = employee;
+          this.employeeNum = employee.getId();
+          this.week = week;
+          this.hours = hours;
      }
 
-     public void setEmployeeId (int employeeId) {
-          this.employeeId = employeeId;
+     public int getEmployeeNum () {
+          return this.employeeNum;
+     }
+
+     public void setEmployeeNum (int employeeNum) {
+          this.employeeNum = employeeNum;
+     }
+
+     public Employee getEmployee () {
+          return this.employee;
+     }
+
+     public void setEmployee (Employee employee) {
+          this.employee = employee;
      }
 
      public String getWeek () {

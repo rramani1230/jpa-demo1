@@ -23,21 +23,33 @@ public class StoreToOwner {
 
 
      @NotNull
-     private int ownerId;
+     private int ownId;
 
-     public StoreToOwner (Store store, int ownerId) {
+     @NotNull
+     @OneToOne
+     private Owner owner;
+
+     public StoreToOwner (Store store, Owner owner) {
           this.store = store;
           this.storeId = this.store.getStoreId();
-          this.ownerId = ownerId;
+          this.owner = owner;
+          this.ownId = owner.getId();
      }
 
-
-     public int getOwnerId () {
-          return this.ownerId;
+     public Owner getOwner () {
+          return this.owner;
      }
 
-     public void setOwnerId (int ownerId) {
-          this.ownerId = ownerId;
+     public void setOwner (Owner owner) {
+          this.owner = owner;
+     }
+
+     public int getOwnId () {
+          return this.ownId;
+     }
+
+     public void setOwnId (int ownId) {
+          this.ownId = ownId;
      }
 
      public Store getStore () {

@@ -10,36 +10,62 @@ import javax.validation.constraints.NotNull;
 
 
 @Entity
-@Table(name = "RegionalToLocation")
+@Table(name = "LocationToRegional")
 
 public class LocationToRegional {
 
      @Id
      @NotNull
-     private int locationManagerId;
+     private int locationManId;
 
      @NotNull
-     private int regionalManagerId;
+     private int regionalManId;
 
+     @NotNull
+     @OneToOne
+     private LocationManager locationManager;
 
-     public LocationToRegional(int regionaManagerId, int locationManagerId) {
-          this.regionalManagerId = regionaManagerId;
-          this.locationManagerId = locationManagerId;
+     @OneToOne
+     @NotNull
+     private RegionalManager regionalManager;
+
+     public LocationToRegional(LocationManager locationManager,
+     RegionalManager regionalManager) {
+          this.locationManager = locationManager;
+          this.locationManId = this.locationManager.getId();
+          this.regionalManager = regionalManager;
+          this.regionalManId = regionalManager.getId();
      }
 
-     public int getRegionalManagerId () {
-          return this.regionalManagerId;
+     public RegionalManager getRegionalManaager () {
+          return this.regionalManager;
      }
 
-     public void setRegionalManagerId (int regionalManagerId) {
-          this.regionalManagerId = regionalManagerId;
+     public void setRegionalManager (RegionalManager regionalManager) {
+          this.regionalManager = regionalManager;
      }
 
-     public int getLocationManagerId () {
-          return this.locationManagerId;
+     public LocationManager getLocationManager () {
+          return this.locationManager;
      }
 
-     public void setLocationManagerId (int locationManagerId) {
-          this.locationManagerId = locationManagerId;
+     public void setLocationManager (LocationManager locationManager) {
+          this.locationManager = locationManager;
+     }
+
+     public int getRegionalManId () {
+          return this.regionalManId;
+     }
+
+     public void setRegionalManId (int regionalManId) {
+          this.regionalManId = regionalManId;
+     }
+
+     public int getLocationManId () {
+          return this.locationManId;
+     }
+
+     public void setLocationManagerId (int locationManId) {
+          this.locationManId = locationManId;
      }
 }

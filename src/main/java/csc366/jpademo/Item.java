@@ -12,13 +12,13 @@ import javax.validation.constraints.NotNull;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Table(name = "Item",
 uniqueConstraints = @UniqueConstraint(columnNames={
-     "itemId", "itemName"
+     "id", "itemName"
 }))
 public abstract class Item {
 
      @Id
      @NotNull
-     private int itemId;
+     private int id;
 
      @NotNull
      private String itemName;
@@ -26,18 +26,18 @@ public abstract class Item {
      @NotNull
      private double itemCost;
 
-     public Item (int itemId, String itemName, double itemCost) {
-          this.itemId = itemId;
+     public Item (int id, String itemName, double itemCost) {
+          this.id = id;
           this.itemName = itemName;
           this.itemCost = itemCost;
      }
 
-     public int getItemId () {
-          return this.itemId;
+     public int getId () {
+          return this.id;
      }
 
-     public void setItemId (int itemId) {
-          this.itemId = itemId;
+     public void setId (int id) {
+          this.id = id;
      }
 
      public String getItemName () {

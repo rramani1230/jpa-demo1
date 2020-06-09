@@ -18,7 +18,7 @@ uniqueConstraints = @UniqueConstraint(columnNames={
 
 
 public abstract class CompanyPerson {
-     
+
      @Id
      @GeneratedValue(strategy = GenerationType.AUTO)
      private int id;
@@ -43,6 +43,7 @@ public abstract class CompanyPerson {
                this.phoneNo = phoneNo;
      }
 
+     @OneToOne
      public int getId () {
           return this.id;
      }

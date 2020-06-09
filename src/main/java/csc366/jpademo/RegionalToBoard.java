@@ -9,36 +9,65 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "BoardToRegional")
+@Table(name = "RegionalToBoard")
 public class RegionalToBoard {
 
      @Id
      @NotNull
-     private int regionalManagerId;
+     private int regionalManId;
 
      @NotNull
-     private int boardMemberId;
+     private int boardMemId;
+
+     @OneToOne
+     @NotNull
+     private RegionalManager regionalManager;
+
+     @OneToOne
+     @NotNull
+     private BoardMember boardMember;
 
 
-     public RegionalToBoard (int regionalManagerId, int boardMemberId) {
-          this.regionalManagerId = regionalManagerId;
-          this.boardMemberId = boardMemberId;
+
+     public RegionalToBoard (RegionalManager regionalManager,
+     BoardMember boardMember) {
+          this.regionalManager = regionalManager;
+          this.boardMember = boardMember;
+          this.regionalManId = this.regionalManager.getId();
+          this.boardMemId = this.boardMember.getId();
      }
 
-     public int getRegionalManagerId () {
-          return this.regionalManagerId;
+     public int getRegionalManId () {
+          return this.regionalManId;
      }
 
-     public void setRegionalManagerId (int regionalManagerId) {
-          this.regionalManagerId = regionalManagerId;
+     public void setRegionalManId (int regionalManId) {
+          this.regionalManId = regionalManId;
      }
 
-     public int getBoardMemberId () {
-          return this.boardMemberId;
+     public RegionalManager getRegionalManaager () {
+          return this.regionalManager;
      }
 
-     public void setBoardMemberId (int boardMemberId) {
-          this.boardMemberId = boardMemberId;
+     public void setRegionalManager (RegionalManager regionalManager) {
+          this.regionalManager = regionalManager;
+     }
+
+
+     public int getBoardMemId () {
+          return this.boardMemId;
+     }
+
+     public void setBoardMemberId (int boardMemId) {
+          this.boardMemId = boardMemId;
+     }
+
+     public BoardMember getBoardMember () {
+          return this.boardMember;
+     }
+
+     public void setBoardMember (BoardMember boardMember) {
+          this.boardMember = boardMember;
      }
 
 }
