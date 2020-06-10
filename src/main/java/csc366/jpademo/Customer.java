@@ -8,13 +8,14 @@ import javax.persistence.*;
 
 import javax.validation.constraints.NotNull;
 
-@Entity
-@Table(name="Customer")
-
+@Entity(name="Customer")
 public class Customer extends CompanyPerson{
+     
      @NotNull
      public boolean truck_driver;
+     @NotNull
      public int home_store;
+     @NotNull
      public int favorite_item;
 
      public Customer (int id, String name, String email,
