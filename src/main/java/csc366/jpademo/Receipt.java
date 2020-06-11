@@ -72,5 +72,4 @@ public class Receipt {
      public void setStore(List<Store> store) {
           this.store = store;
      }
-
 }

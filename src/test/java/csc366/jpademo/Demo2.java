@@ -53,59 +53,35 @@ public class Demo2 {
     @Autowired
     private EntityManager entityManager;  // https://docs.oracle.com/javaee/7/api/javax/persistence/EntityManager.html
     
-    @Autowired
-    private PersonRepository personRepository;
-
+    
     @BeforeEach
     private void setup() {
-        // Hobby h1 = new Hobby("Skiing");
-        // entityManager.persist(h1);
-        // Hobby h2 = new Hobby("Football");
-        // entityManager.persist(h2);
-        // Hobby h3 = new Hobby("Hiking");
-        // entityManager.persist(h3);
-        // Hobby h4 = new Hobby("Knitting");
-        // entityManager.persist(h4);
-        
-        // IntStream.range(0, 5).forEachOrdered(n -> {
-        //         String nm = String.format("Person%d", n);
-        //         Person p = new Person(nm, "Test", nm+"@test.com");
-        //         if (n >= 1) { p.addHobby(h1); }
-        //         if (n >= 2) { p.addHobby(h2); }
-        //         if (n >= 3) { p.addHobby(h3); }
-        //         if (n >= 4) { p.addHobby(h4); }
-        //         entityManager.persist(p);
-        //     });
-        Person p1 = new Person("Chuck", "Norris", "random@domain");
-        entityManager.persist(p1);
-        Person p2 = new Person("Lebron", "James", "lbj@nba");
-        entityManager.persist(p2);
-        Employee e1 = new Employee(1, "1990-06-06", "e1@store", "Joe", "415-000-0000", "Bay Area");
+        Employee e1 = new Employee(200, "Joe", "e1@store", "1990-06-06",  "415-000-0000", "Bay Area", true);
         entityManager.persist(e1);
-        Employee e2 = new Employee(2, "1990-07-07", "e2@store", "Bob", "310-100-0000", "Los Angeles");
+        Employee e2 = new Employee(201, "Bob", "e2@store", "1990-07-07",  "310-100-0000", "Los Angeles", false);
         entityManager.persist(e2);
-        Employee e3 = new Employee(3, "1990-08-08", "e3@store", "Kevin", "415-200-0000", "Bay Area");
+        Employee e3 = new Employee(202, "Kevin", "e3@store", "1990-08-08",  "415-200-0000", "Bay Area", false);
         entityManager.persist(e3);
-        Employee e4 = new Employee(4, "1990-09-09", "e4@store", "Chance", "415-300-0000", "Chicago");
+        Employee e4 = new Employee(203, "Chance", "e4@store", "200-01-01",  "415-300-0000", "Chicago", true);
         entityManager.persist(e4);
 
 	    // entityManager.flush();  // "Synchronize the persistence context to the underlying database"
         // entityManager.clear();  // "Clear the persistence context, causing all managed entities to become detached."
     }
     
-    @Test
-    @Order(1)
-    public void testFindPerson() {
-        Person p = personRepository.findByFirstName("Chuck");
-        log.info(p.toString());
-    }
+    // @Test
+    // @Order(1)
+    // public void testFindPerson() {
+    //     Person p = personRepository.findByFirstName("Chuck");
+    //     log.info(p.toString());
+    // }
     
-    @Test
-    @Order(2)
-    public void testFindAllPeople() {
-        List<Person> all = personRepository.findAll();
-        log.info(all.toString());
-    }
+    // @Test
+    // @Order(2)
+    // public void testFindAllPeople() {
+    //     List<Person> all = personRepository.findAll();
+    //     log.info(all.toString());
+    // }
 
     // Find all employees working in a specific region (JPQL 1)
     @Test
@@ -114,6 +90,8 @@ public class Demo2 {
         List<Employee> emps = entityManager.createQuery("select e from Employee e where e.region = 'Chicago'",
                                                         Employee.class).getResultList();
         log.info(emps.toString());
+        System.out.println(emps.get(0));
+        
     }
 
     // @Test

@@ -12,11 +12,21 @@ import javax.validation.constraints.NotNull;
 public class Employee extends CompanyPerson {
 
      private String region;
+     private boolean injured;
 
      public Employee (int id, String name, String email,
-     String dateOfBirth, String phoneNo, String region) {
+     String dateOfBirth, String phoneNo, String region, boolean injured) {
           super(id,name,email,dateOfBirth,phoneNo);
           this.region = region;
+          this.injured = injured;
+     }
+
+     public boolean getInjured() {
+          return this.injured;
+     }
+
+     public void setInjured(boolean injured) {
+          this.injured = injured;
      }
 
      public String getRegion() {
