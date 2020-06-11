@@ -22,10 +22,10 @@ public class Shipment {
      private int shipmentId;
 
      @NotNull
-     private int supplierId;
+     private int supplierId; // where it's coming from
 
      @NotNull
-     private int storeId;
+     private int storeId; // where it's going
 
      @NotNull
      private int itemId;

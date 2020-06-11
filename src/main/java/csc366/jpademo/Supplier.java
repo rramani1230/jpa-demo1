@@ -3,6 +3,8 @@ package csc366.jpademo;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.StringJoiner;
+import java.util.List;
+import java.util.ArrayList;
 
 import javax.persistence.*;
 
@@ -25,6 +27,9 @@ public class Supplier {
 
      @NotNull
      private String supplierAddress;
+
+     @ManyToMany
+     private List<Store> stores = new ArrayList<>(); // list of stores to supply
 
      private String supplierCounty;
 

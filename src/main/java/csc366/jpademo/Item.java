@@ -9,12 +9,11 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Table(name = "Item",
 uniqueConstraints = @UniqueConstraint(columnNames={
      "itemId", "itemName"
 }))
-public abstract class Item {
+public class Item {
 
      @Id
      @NotNull
@@ -26,10 +25,16 @@ public abstract class Item {
      @NotNull
      private double itemCost;
 
-     public Item (int itemId, String itemName, double itemCost) {
+     @ManyToOne
+     private Inventory inventory; // every item will belong to an inventory
+
+     private boolean isPrepackaged;
+
+     public Item (int itemId, String itemName, double itemCost, boolean prepackaged) {
           this.itemId = itemId;
           this.itemName = itemName;
           this.itemCost = itemCost;
+          this.isPrepackaged = prepackaged;
      }
 
      public int getItemId () {

@@ -3,6 +3,10 @@ package csc366.jpademo;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.StringJoiner;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 
 import javax.persistence.*;
 
@@ -10,39 +14,31 @@ import javax.validation.constraints.NotNull;
 
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Table(name = "Inventory",
 uniqueConstraints = @UniqueConstraint(columnNames={
-     "itemId"
+     "inventoryId"
 }))
 
-public abstract class Inventory {
+public class Inventory {
 
      @NotNull
      @Id
-     private int itemId;
+     private int inventoryId;
 
-     @NotNull
-     private int quantity;
+     // @OneToMany
+     // @MapKeyJoinColumn(name = "itemId")
+     // private Map<Item, Integer> listofitems = new HashMap<Item, Integer>();
 
-     public Inventory (int itemId, int quantity) {
-          this.itemId = itemId;
-          this.quantity = quantity;
+     // NOTE: no clue why this doesn't work w/ a map data structure
+     // going to need to work around this somehow to keep track of item quantity
+     @OneToMany
+     private List<Item> listofitems = new ArrayList<>();
+
+     public Inventory (int inventoryId) {
+          this.inventoryId = inventoryId;
      }
 
      public int getItemId () {
-          return this.itemId;
-     }
-
-     public void setItemId (int itemId) {
-          this.itemId = itemId;
-     }
-
-     public int getQuantity () {
-          return this.quantity;
-     }
-
-     public void setQuantity (int quantity) {
-          this.quantity = quantity;
+          return this.inventoryId;
      }
 }
