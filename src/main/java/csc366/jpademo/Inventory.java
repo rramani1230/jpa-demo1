@@ -42,7 +42,7 @@ public abstract class Inventory {
           return this.quantity;
      }
 
-     public void setQuantity () {
+     public void setQuantity (int quantity) {
           this.quantity = quantity;
      }
 }

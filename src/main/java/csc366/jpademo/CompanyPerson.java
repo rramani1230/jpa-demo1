@@ -19,7 +19,9 @@ uniqueConstraints = @UniqueConstraint(columnNames={
 
 public abstract class CompanyPerson {
      @Id
-     @GeneratedValue(strategy = GenerationType.AUTO)
+     // @GeneratedValue(strategy = GenerationType.AUTO)
+     // NOTE: I think it should not be gentype auto if the contructor 
+     // in the subclasses still take it as an argument
      private int id;
 
      @NotNull
