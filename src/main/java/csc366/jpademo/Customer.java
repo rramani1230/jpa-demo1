@@ -1,8 +1,6 @@
 package csc366.jpademo;
 
-import java.util.Set;
-import java.util.HashSet;
-import java.util.StringJoiner;
+import java.util.*;
 
 import javax.persistence.*;
 
@@ -12,11 +10,15 @@ import javax.validation.constraints.NotNull;
 public class Customer extends CompanyPerson{
      
      @NotNull
-     public boolean truck_driver;
+     private boolean truck_driver;
      @NotNull
-     public int home_store;
+     private int home_store;
      @NotNull
-     public int favorite_item;
+     private int favorite_item;
+
+     @ManyToMany
+     // private List<Receipt> receipts = new ArrayList<>();
+     private List<Receipt> receipts = new ArrayList<>();
 
      public Customer (int id, String name, String email,
      String dateOfBirth, String phoneNo, boolean truck_driver, 
@@ -51,4 +53,11 @@ public class Customer extends CompanyPerson{
           this.favorite_item = favorite_item;
      }
 
+     public List<Receipt> getReceipts () {
+          return this.receipts;
+     }
+
+     public void setReceipts (List<Receipt> receipts) {
+          this.receipts = receipts;
+     }
 }

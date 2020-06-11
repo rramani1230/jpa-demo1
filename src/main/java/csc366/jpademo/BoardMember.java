@@ -1,8 +1,6 @@
 package csc366.jpademo;
 
-import java.util.List;
-import java.util.ArrayList;
-
+import java.util.*;
 import javax.persistence.*;
 
 import javax.validation.constraints.NotNull;
@@ -16,13 +14,9 @@ public class BoardMember extends CompanyPerson {
      @NotNull
      private boolean hasDegree;
 
-     // each board member will have a list of 
-     // regional managers that they overlook
-     @OneToMany(mappedBy = "id", // join column (id in RegionalManager)
-               cascade = CascadeType.ALL,
-               orphanRemoval = true,
-               fetch = FetchType.LAZY)
-     private List<RegionalManager> listOfRegManagers = new ArrayList<>();
+
+     @OneToMany
+     private List<RegionalManager> regionalManagers = new ArrayList<>();
 
      public BoardMember (int id, String name, String email,
      String dateOfBirth, String phoneNo, String boardStrategy,
@@ -49,10 +43,10 @@ public class BoardMember extends CompanyPerson {
      }
 
      public List<RegionalManager> getRegionalManagers() {
-          return this.listOfRegManagers;
+          return this.regionalManagers;
      }
 
      public void setRegionalManagers(List<RegionalManager> rms) {
-          this.listOfRegManagers = rms;
+          this.regionalManagers = rms;
      }
 }

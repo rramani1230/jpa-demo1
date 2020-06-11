@@ -1,9 +1,5 @@
 package csc366.jpademo;
 
-import java.util.Set;
-import java.util.HashSet;
-import java.util.StringJoiner;
-
 import javax.persistence.*;
 
 import javax.validation.constraints.NotNull;
@@ -18,10 +14,8 @@ uniqueConstraints = @UniqueConstraint(columnNames={
 
 
 public abstract class CompanyPerson {
+
      @Id
-     // @GeneratedValue(strategy = GenerationType.AUTO)
-     // NOTE: I think it should not be gentype auto if the contructor 
-     // in the subclasses still take it as an argument
      private int id;
 
      @NotNull
@@ -30,6 +24,8 @@ public abstract class CompanyPerson {
      @NotNull
      private String email;
 
+
+     @NotNull
      private String dateOfBirth;
 
      @NotNull
@@ -84,7 +80,6 @@ public abstract class CompanyPerson {
           this.phoneNo = phoneNo;
      }
 
-     @Override
      public String toString () {
           return "Name: " + name;
      }

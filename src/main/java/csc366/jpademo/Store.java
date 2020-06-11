@@ -1,8 +1,6 @@
 package csc366.jpademo;
 
-import java.util.Set;
-import java.util.HashSet;
-import java.util.StringJoiner;
+import java.util.*;
 
 import javax.persistence.*;
 
@@ -26,16 +24,28 @@ public class Store {
      @NotNull
      private String county;
 
+     @OneToOne
+     private Inventory inventory;
+
      @ManyToMany(fetch = FetchType.LAZY)
-     private Set<Owner> owners = new HashSet<>();
+     private List<Owner> owners = new ArrayList<>();
  
      @OneToOne
      private LocationManager locationManager;
 
-     public Store (int storeId, String address, String county) {
+     @ManyToMany
+     private List<Receipt> receipts = new ArrayList<>();
+
+     @NotNull
+     @OneToMany
+     private List<Shipment> shipments = new ArrayList<>();
+     
+
+     public Store (int storeId, String address, String county, Inventory inventory) {
           this.storeId = storeId;
           this.address = address;
           this.county = county;
+          this.inventory = inventory;
      }
 
      // owners to a store are like shareholders to a stock
@@ -43,8 +53,12 @@ public class Store {
           owners.add(owner);
      }
 
-     public Set<Owner> getOwners() {
+     public List<Owner> getOwners() {
           return this.owners;
+     }
+
+     public void setOwners (List<Owner> owners) {
+          this.owners = owners;
      }
    
      public void setLocationManager(LocationManager lm) {
@@ -77,5 +91,29 @@ public class Store {
 
      public void setCounty (String county) {
           this.county = county;
+     }
+
+     public List<Receipt> getReceipts () {
+          return this.receipts;
+     }
+
+     public void setReceipts (List<Receipt> receipts) {
+          this.receipts = receipts;
+     }
+
+     public List<Shipment> getShipments () {
+          return this.shipments;
+     }
+
+     public void setShipments (List<Shipment> shipments) {
+          this.shipments = shipments;
+     }
+
+     public Inventory getInteventory () {
+          return this.inventory;
+     }
+
+     public void setInventory (Inventory inventory) {
+          this.inventory = inventory;
      }
 }

@@ -1,9 +1,6 @@
 package csc366.jpademo;
 
-import java.util.Set;
-import java.util.HashSet;
-import java.util.StringJoiner;
-
+import java.util.*;
 import javax.persistence.*;
 
 import javax.validation.constraints.NotNull;
@@ -22,13 +19,16 @@ public class Shipment {
      private int shipmentId;
 
      @NotNull
-     private int supplierId;
+     @ManyToOne
+     private Supplier supplier;
 
      @NotNull
-     private int storeId;
+     @ManyToOne
+     private Store store;
 
      @NotNull
-     private int itemId;
+     @ManyToMany
+     private List<Item> items = new ArrayList<Item>();
 
      @NotNull
      private int quantity;
@@ -36,52 +36,61 @@ public class Shipment {
      @NotNull
      private String date;
 
-     public Shipment (int supplierId, int storeId, int itemId, int quantity,
-     String date) {
-          this.supplierId = supplierId;
-          this.storeId = storeId;
-          this.itemId = itemId;
+
+     public Shipment(int shipmentId, int quantity, String date) {
+          this.shipmentId = shipmentId;
           this.quantity = quantity;
           this.date = date;
      }
 
-     public int getSupplierId () {
-          return this.supplierId;
+
+     public int getShipmentId() {
+          return this.shipmentId;
      }
 
-     public void setSupplierId (int supplierId) {
-          this.supplierId = supplierId;
+     public void setShipmentId(int shipmentId) {
+          this.shipmentId = shipmentId;
      }
 
-     public int getStoreId () {
-          return this.storeId;
+     public Supplier getSupplier() {
+          return this.supplier;
      }
 
-     public void setStoreId (int storeId) {
-          this.storeId = storeId;
+     public void setSupplier(Supplier supplier) {
+          this.supplier = supplier;
      }
 
-     public int getItemId () {
-          return this.itemId;
+     public Store getStore() {
+          return this.store;
      }
 
-     public void setItemId (int itemId) {
-          this.itemId = itemId;
+     public void setStore(Store store) {
+          this.store = store;
      }
 
-     public int getQuantity () {
+     public List<Item> getItem() {
+          return this.items;
+     }
+
+     public void setItem(List<Item> items) {
+          this.items = items;
+     }
+
+     public int getQuantity() {
           return this.quantity;
      }
 
-     public void setQuantity (int quantity) {
+     public void setQuantity(int quantity) {
           this.quantity = quantity;
      }
 
-     public String getDate () {
+     public String getDate() {
           return this.date;
      }
 
-     public void setDate (String date) {
+     public void setDate(String date) {
           this.date = date;
      }
+     
+   
 }
