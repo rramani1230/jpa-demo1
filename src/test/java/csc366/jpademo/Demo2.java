@@ -80,13 +80,13 @@ public class Demo2 {
         entityManager.persist(p1);
         Person p2 = new Person("Lebron", "James", "lbj@nba");
         entityManager.persist(p2);
-        Employee e1 = new Employee(1, "1990-06-06", "e1@store", "Joe", "415-000-0000", "Bay Area");
+        Employee e1 = new Employee(1, "1990-06-06", "e1@store", "Joe", "415-000-0000", "Bay Area", true);
         entityManager.persist(e1);
-        Employee e2 = new Employee(2, "1990-07-07", "e2@store", "Bob", "310-100-0000", "Los Angeles");
+        Employee e2 = new Employee(2, "1990-07-07", "e2@store", "Bob", "310-100-0000", "Los Angeles", true);
         entityManager.persist(e2);
-        Employee e3 = new Employee(3, "1990-08-08", "e3@store", "Kevin", "415-200-0000", "Bay Area");
+        Employee e3 = new Employee(3, "1990-08-08", "e3@store", "Kevin", "415-200-0000", "Bay Area", false);
         entityManager.persist(e3);
-        Employee e4 = new Employee(4, "1990-09-09", "e4@store", "Chance", "415-300-0000", "Chicago");
+        Employee e4 = new Employee(4, "1990-09-09", "e4@store", "Chance", "415-300-0000", "Chicago", true);
         entityManager.persist(e4);
 
 	    // entityManager.flush();  // "Synchronize the persistence context to the underlying database"
@@ -115,6 +115,16 @@ public class Demo2 {
                                                         Employee.class).getResultList();
         log.info(emps.toString());
     }
+
+    // Find all employees that are able to work (JPQL 2)
+    // NOTE: no clue how this doesn't work...
+    // @Test
+    // @Order(4)
+    // public void findAllActiveEmps() {
+    //     List<Employee> emps = entityManager.createQuery("select e from Employee e where e.work_status = '1'",
+    //                                                     Employee.class).getResultList();
+    //     log.info(emps.toString());
+    // }
 
     // @Test
     // @Order(3)

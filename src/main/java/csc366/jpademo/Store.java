@@ -3,6 +3,8 @@ package csc366.jpademo;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.StringJoiner;
+import java.util.List;
+import java.util.ArrayList;
 
 import javax.persistence.*;
 
@@ -28,9 +30,16 @@ public class Store {
 
      @ManyToMany(fetch = FetchType.LAZY)
      private Set<Owner> owners = new HashSet<>();
+
+     @ManyToMany
+     private List<Supplier> suppliers = new ArrayList<>(); // the store's suppliers
  
      @OneToOne
      private LocationManager locationManager;
+
+     @OneToMany 
+     private List<Employee> employees = new ArrayList<>();
+
 
      public Store (int storeId, String address, String county) {
           this.storeId = storeId;
