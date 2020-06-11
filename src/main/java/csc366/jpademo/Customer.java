@@ -8,7 +8,11 @@ import javax.persistence.*;
 
 import javax.validation.constraints.NotNull;
 
-@Entity(name="Customer")
+
+@Entity  // indicates that this class maps to a database table
+@Table(name = "customer",     // may be omitted for default naming
+       uniqueConstraints = @UniqueConstraint(columnNames={"id"})
+)
 public class Customer extends CompanyPerson{
      
      @NotNull
@@ -17,6 +21,8 @@ public class Customer extends CompanyPerson{
      public int home_store;
      @NotNull
      public int favorite_item;
+
+     /* Insert foreign key for home store and favorite items */
 
      public Customer (int id, String name, String email,
      String dateOfBirth, String phoneNo, boolean truck_driver, 
