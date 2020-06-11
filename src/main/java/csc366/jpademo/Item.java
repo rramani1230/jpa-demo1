@@ -1,8 +1,6 @@
 package csc366.jpademo;
 
-import java.util.Set;
-import java.util.HashSet;
-import java.util.StringJoiner;
+import java.util.*;
 
 import javax.persistence.*;
 
@@ -14,7 +12,7 @@ import javax.validation.constraints.NotNull;
 uniqueConstraints = @UniqueConstraint(columnNames={
      "itemId", "itemName"
 }))
-public abstract class Item {
+public class Item {
 
      @Id
      @NotNull
@@ -26,10 +24,27 @@ public abstract class Item {
      @NotNull
      private double itemCost;
 
-     public Item (int itemId, String itemName, double itemCost) {
+     @NotNull
+     private boolean prepackaged;
+
+     @NotNull
+     @ManyToMany
+     private List<Receipt> receipts = new ArrayList<>();
+
+     @NotNull
+     @ManyToMany(mappedBy = "items")
+     private List<Shipment> shipments = new ArrayList<>();
+
+     @NotNull
+     @ManyToMany(mappedBy = "items")
+     private List<Inventory> inventories = new ArrayList<>();
+
+
+     public Item (int itemId, String itemName, double itemCost, boolean prepackaged) {
           this.itemId = itemId;
           this.itemName = itemName;
           this.itemCost = itemCost;
+          this.prepackaged = prepackaged;
      }
 
      public int getItemId () {
@@ -54,5 +69,21 @@ public abstract class Item {
 
      public void setItemCost (double itemCost) {
           this.itemCost = itemCost;
+     }
+
+     public boolean getPrepackaged () {
+          return this.prepackaged;
+     }
+
+     public void setPrepackaged (boolean prepackaged) {
+          this.prepackaged = prepackaged;
+     }
+
+     public List<Receipt> getReceipts () {
+          return this.receipts;
+     }
+
+     public void setReceipts (List<Receipt> receipts) {
+          this.receipts = receipts;
      }
 }

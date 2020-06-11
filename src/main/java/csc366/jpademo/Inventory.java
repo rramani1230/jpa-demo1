@@ -1,48 +1,28 @@
 package csc366.jpademo;
 
-import java.util.Set;
-import java.util.HashSet;
-import java.util.StringJoiner;
+import java.util.*;
 
 import javax.persistence.*;
 
 import javax.validation.constraints.NotNull;
 
 
-@Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@Table(name = "Inventory",
-uniqueConstraints = @UniqueConstraint(columnNames={
-     "itemId"
-}))
+@Entity(name="Inventory")
 
-public abstract class Inventory {
-
-     @NotNull
+public class Inventory {
+     
      @Id
-     private int itemId;
+     private int inventoryId;
 
-     @NotNull
-     private int quantity;
+     @OneToOne
+     private Store store;
 
-     public Inventory (int itemId, int quantity) {
-          this.itemId = itemId;
-          this.quantity = quantity;
+     @ManyToMany
+     private List<Item> items = new ArrayList<>();
+
+     public Inventory (int inventoryId, Store store) {
+          this.inventoryId = inventoryId;
+          this.store = store;
      }
 
-     public int getItemId () {
-          return this.itemId;
-     }
-
-     public void setItemId (int itemId) {
-          this.itemId = itemId;
-     }
-
-     public int getQuantity () {
-          return this.quantity;
-     }
-
-     public void setQuantity () {
-          this.quantity = quantity;
-     }
 }

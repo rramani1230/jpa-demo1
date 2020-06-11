@@ -1,9 +1,6 @@
 package csc366.jpademo;
 
-import java.util.Set;
-import java.util.HashSet;
-import java.util.StringJoiner;
-
+import java.util.*;
 import javax.persistence.*;
 
 import javax.validation.constraints.NotNull;
@@ -31,6 +28,10 @@ public class Supplier {
      @NotNull
      private String licenseNo;
      private double qualityRating;
+
+     @NotNull
+     @OneToMany(mappedBy = "supplier")
+     private List<Shipment> shipments = new ArrayList<>();
 
      public int getSupplierId () {
           return this.supplierId;
@@ -70,5 +71,13 @@ public class Supplier {
 
      public void setQualityRating (double qualityRating) {
           this.qualityRating = qualityRating;
+     }
+
+     public List<Shipment> getShipments () {
+          return this.shipments;
+     }
+
+     public void setShipments (List<Shipment> shipments) {
+          this.shipments = shipments;
      }
 }
