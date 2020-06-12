@@ -43,9 +43,9 @@ import org.slf4j.LoggerFactory;
 @ActiveProfiles("junit")
 
 
-public class Demo2 {
+public class Tests {
 
-    private final static Logger log = LoggerFactory.getLogger(Demo2.class);
+    private final static Logger log = LoggerFactory.getLogger(Tests.class);
 
     @Autowired
 	private EntityManager entityManager; 
