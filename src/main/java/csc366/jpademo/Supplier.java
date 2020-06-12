@@ -29,6 +29,18 @@ public class Supplier {
      private String licenseNo;
      private double qualityRating;
 
+     public Supplier (int supplierId, String supplierName, String supplierAddress, String supplierCounty,
+     String licenseNo, double qualityRating) {
+          this.supplierId = supplierId;
+          this.supplierName = supplierName;
+          this.supplierAddress = supplierAddress;
+          this.supplierCounty = supplierCounty;
+          this.licenseNo = licenseNo;
+          this.qualityRating = qualityRating;
+     }
+
+
+
      @NotNull
      @OneToMany(mappedBy = "supplier")
      private List<Shipment> shipments = new ArrayList<>();
@@ -79,5 +91,9 @@ public class Supplier {
 
      public void setShipments (List<Shipment> shipments) {
           this.shipments = shipments;
+     }
+     
+     public String toString () {
+          return "Supplier Name = " + this.supplierName; 
      }
 }

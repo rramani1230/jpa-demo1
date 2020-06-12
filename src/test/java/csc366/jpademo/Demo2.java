@@ -44,8 +44,8 @@ import org.slf4j.LoggerFactory;
 	"logging.pattern.console= %d{yyyy-MM-dd HH:mm:ss} - %msg%n"
 })
 @ActiveProfiles("junit")
-//@AutoConfigureTestDatabase(replace=Replace.NONE)   // without this, @DataJpaTest always uses in-memory H2 database
-//@TestMethodOrder(OrderAnnotation.class)
+
+
 public class Demo2 {
 
     private final static Logger log = LoggerFactory.getLogger(Demo2.class);
@@ -62,28 +62,23 @@ public class Demo2 {
         entityManager.persist(e2);
         Employee e3 = new Employee(202, "Kevin", "e3@store", "1990-08-08",  "415-200-0000", "Bay Area", false);
         entityManager.persist(e3);
-        Employee e4 = new Employee(203, "Chance", "e4@store", "200-01-01",  "415-300-0000", "Chicago", true);
+        Employee e4 = new Employee(203, "Chance", "e4@store", "2000-01-01",  "415-300-0000", "Chicago", true);
         entityManager.persist(e4);
-
-	    // entityManager.flush();  // "Synchronize the persistence context to the underlying database"
-        // entityManager.clear();  // "Clear the persistence context, causing all managed entities to become detached."
+        Employee e201 = new Employee(204, "Buddy", "e201@store", "2000-01-01", "650-111-1111", "Johannesburg", true);
+        entityManager.persist(e201);
+        Supplier sup205 = new Supplier(205, "CoolSuppliers", "123 Sunshine Way", "Los Angeles County", "12345", 4.0);
+        entityManager.persist(sup205);
+        Supplier sup206 = new Supplier(206, "WickedSuppliers", "123 Rainbow Way", "San FransiscoCounty", "23456", 3.0);
+        entityManager.persist(sup206);
+        Supplier sup207 = new Supplier(207, "AmazingSuppliers", "123 Sprinkle Way", "Contra Costa County", "34567", 2.8);
+        entityManager.persist(sup207);
+        Supplier sup208 = new Supplier(208, "SuperSuppliers", "123 Star Way", "San Luis Obispo County", "45678", 4.6);
+        entityManager.persist(sup208);
+        Supplier sup209 = new Supplier(209, "GreatSuppliers", "123 Railroad Way", "Santa Clara County", "56789", 5.0);
+        entityManager.persist(sup209);
     }
     
-    // @Test
-    // @Order(1)
-    // public void testFindPerson() {
-    //     Person p = personRepository.findByFirstName("Chuck");
-    //     log.info(p.toString());
-    // }
-    
-    // @Test
-    // @Order(2)
-    // public void testFindAllPeople() {
-    //     List<Person> all = personRepository.findAll();
-    //     log.info(all.toString());
-    // }
 
-    // Find all employees working in a specific region (JPQL 1)
     @Test
     @Order(3)
     public void findAllEmpsInRegion() {
@@ -94,68 +89,50 @@ public class Demo2 {
         
     }
 
-    // @Test
-    // @Order(3)
-    // // https://en.wikibooks.org/wiki/Java_Persistence/JPQL
-    // public void testJpqlQuery1() {
-    //     List<Person> all = entityManager.createQuery("select p from Person p " +
-    //                                                  "join p.hobbies join p.addresses",
-    //                                                  Person.class).getResultList();
-    //     log.info(all.toString());
-    // }
+    @Test
+    @Order(4)
+    public void findSuppliersByCounty() {
+        List<Supplier> sups = entityManager.createQuery(
+            "select s from Supplier s where s.supplierCounty = 'San Luis Obispo County'",
+            Supplier.class).getResultList();
+        System.out.println(sups.get(0));
+        System.out.println("-----------------------------------------------------------------------------------------------------");
+    }
 
-    // @Test
-    // @Order(4)
-    // public void testJpqlQuery2() {
-    //     List<Person> all = entityManager.createQuery("select p from Person p " +
-    //                                                  " left join fetch p.hobbies " +
-    //                                                  " left join fetch p.addresses",
-    //                                                  Person.class).getResultList();
-    //     log.info(all.toString());
-    // }
+    @Test
+    @Order(5)
+    public void findSuppliersByLicenseNo() {
+        List<Supplier> sups = entityManager.createQuery(
+            "select s from Supplier s where s.licenseNo = '12345'",
+            Supplier.class).getResultList();
+        System.out.println(sups.get(0));
+    }
 
-    // @Test
-    // @Order(5)
-    // public void testJpqlQuery3() {
-    //     List<Person> all = entityManager.createQuery("select distinct p from Person p " +
-    //                                                  " left join fetch p.hobbies " +
-    //                                                  " left join fetch p.addresses",
-    //                                                  Person.class).getResultList();
-    //     log.info(all.toString());
-    // }
+    @Test
+    @Order(6)
+    public void findSuppliersByAddress() {
+        List<Supplier> sups = entityManager.createQuery(
+            "select s from Supplier s where s.supplierAddress = '123 Rainbow Way'",
+            Supplier.class).getResultList();
+        System.out.println(sups.get(0));
+    }
 
-    // @Test
-    // @Order(6)
-    // // https://en.wikibooks.org/wiki/Java_Persistence/Criteria
-    // // https://developer.ibm.com/articles/j-typesafejpa/
-    // public void testCriteriaQuery1() {
+    @Test
+    @Order(7)
+    public void findSuppliersByName() {
+        List<Supplier> sups = entityManager.createQuery(
+            "select s from Supplier s where s.supplierName = 'AmazingSuppliers'",
+            Supplier.class).getResultList();
+        System.out.println(sups.get(0));
+    }
 
-    //     CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-    //     CriteriaQuery<Person> cq = cb.createQuery(Person.class);
-    //     Root<Person> pq = cq.from(Person.class);
-    //     cq.where(cb.or(
-    //                    cb.like(pq.get("email"), "Person2%"),
-    //                    cb.equal(pq.get("firstName"), "Person3")
-    //                    )
-    //              );        
-    //     List<Person> all = entityManager.createQuery(cq).getResultList();
+    @Test
+    @Order(8)
+    public void findSuppliersByRating() {
+        List<Supplier> sups = entityManager.createQuery(
+            "select s from Supplier s where s.qualityRating > 4.8",
+            Supplier.class).getResultList();
+        System.out.println(sups.get(0));
+    }
 
-    //     log.info(all.toString());
-    // }
-
-    // @Test
-    // @Order(7)
-    // public void testCriteriaQuery2() {
-
-    //     CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-    //     CriteriaQuery<Person> cq = cb.createQuery(Person.class);
-    //     Root<Person> pq = cq.from(Person.class);
-    //     pq.fetch("addresses", JoinType.LEFT);
-    //     pq.fetch("hobbies", JoinType.LEFT);
-    //     //cq.distinct(true);
-    //     List<Person> all = entityManager.createQuery(cq).getResultList();
-
-    //     log.info(all.toString());
-    // }
-    
 }
