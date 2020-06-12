@@ -25,7 +25,7 @@ public class Inventory {
      @NotNull
      private int quantity;
 
-     public Inventory (Store strore, Item item, int quantity) {
+     public Inventory (Store store, Item item, int quantity) {
           this.item = item;
           this.store = store;
           this.quantity = quantity;

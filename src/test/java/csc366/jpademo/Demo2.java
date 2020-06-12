@@ -537,46 +537,46 @@ public class Demo2 {
 			Shipment.class).getResultList();
 		System.out.println(shipments.get(0));
 	}
-	// @Test
-	// @Order(19)
-	// public void findInventoryByStore() {
-	// 	List<Inventory> inventory = entityManager.createQuery(
-	// 		"select i from Inventory i where i.store != 5",
-	// 		Inventory.class).getResultList();
-	// 	System.out.println(inventory.get(0));
-	// }
-	// @Test
-	// @Order(20)
-	// public void findInventoryByItemAndQuantity() {
-	// 	List<Inventory> inventory = entityManager.createQuery(
-	// 		"select i from Inventory i where i.item = 2 and i.quantity = 5",
-	// 		Inventory.class).getResultList();
-	// 	System.out.println(inventory.get(0));
-	// }
-	// @Test
-	// @Order(21)
-	// public void findStoreByAddressAndCounty() {
-	// 	List<Store> stores = entityManager.createQuery(
-	// 		"select s from Store s where s.address = '123 Sunshine Way' and s.county = 'SLO County'",
-	// 		Store.class).getResultList();
-	// 	System.out.println(stores.get(0));
-	// }
-	// @Test
-	// @Order(22)
-	// public void findStoreByInventoryAndLocationManager() {
-	// 	List<Store> stores = entityManager.createQuery(
-	// 		"select s from Store s where s.inventory = s.locationManager",
-	// 		Store.class).getResultList();
-	// 	System.out.println(stores.get(0));
-	// }
-	// @Test
-	// @Order(23)
-	// public void findSchedulerByEmployeeAndStore() {
-	// 	List<Scheduler> schedulers = entityManager.createQuery(
-	// 		"select s from Scheduler s where s.employee = 7 and s.store = 5",
-	// 		Scheduler.class).getResultList();
-	// 	System.out.println(schedulers.get(0));
-	// }
+	@Test
+	@Order(19)
+	public void findInventoryByStore() {
+		List<Inventory> inventory = entityManager.createQuery(
+			"select i from Inventory i where i.store != 5",
+			Inventory.class).getResultList();
+		System.out.println(inventory.get(0));
+	}
+	@Test
+	@Order(20)
+	public void findInventoryByItemAndQuantity() {
+		List<Inventory> inventory = entityManager.createQuery(
+			"select i from Inventory i where i.item = 2 and i.quantity = 5",
+			Inventory.class).getResultList();
+		System.out.println(inventory.get(0));
+	}
+	@Test
+	@Order(21)
+	public void findStoreByAddressAndCounty() {
+		List<Store> stores = entityManager.createQuery(
+			"select s from Store s where s.address = '123 Sunshine Way' and s.county = 'SLO County'",
+			Store.class).getResultList();
+		System.out.println(stores.get(0));
+	}
+	@Test
+	@Order(22)
+	public void findStoreByInventoryAndLocationManager() {
+		List<Store> stores = entityManager.createQuery(
+			"select s from Store s where s.id = 8",
+			Store.class).getResultList();
+		System.out.println(stores.get(0));
+	}
+	@Test
+	@Order(23)
+	public void findSchedulerByEmployeeAndStore() {
+		List<Scheduler> schedulers = entityManager.createQuery(
+			"select s from Scheduler s where s.employee = 506 and s.store = 5",
+			Scheduler.class).getResultList();
+		System.out.println(schedulers.get(0));
+	}
 	@Test
 	@Order(24)
 	public void findSchedulerByWeek() {
