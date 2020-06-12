@@ -14,6 +14,7 @@ public class Scheduler {
 
      @Id
      @GeneratedValue(strategy=GenerationType.AUTO)
+     @NotNull
      private int entry;
 
      @ManyToOne
@@ -30,5 +31,47 @@ public class Scheduler {
           this.week = week;
           this.hours = hours;
      }
+
+
+     public int getEntry() {
+          return this.entry;
+     }
+
+     public void setEntry(int entry) {
+          this.entry = entry;
+     }
+
+     public Employee getEmployee() {
+          return this.employee;
+     }
+
+     public void setEmployee(Employee employee) {
+          this.employee = employee;
+     }
+
+     public Store getStore() {
+          return this.store;
+     }
+
+     public void setStore(Store store) {
+          this.store = store;
+     }
+
+     public String getWeek() {
+          return this.week;
+     }
+
+     public void setWeek(String week) {
+          this.week = week;
+     }
+
+     public double getHours() {
+          return this.hours;
+     }
+
+     public void setHours(double hours) {
+          this.hours = hours;
+     }
+
 
 }

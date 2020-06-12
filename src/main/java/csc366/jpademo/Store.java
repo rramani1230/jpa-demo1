@@ -28,7 +28,7 @@ public class Store {
      private Inventory inventory;
 
      @OneToMany
-     private List<Customer> favorites = new ArrayList<Customer>();
+     private List<Customer> favoriteByCustomer = new ArrayList<Customer>();
 
      @OneToMany
      private List<Scheduler> scheduler = new ArrayList<Scheduler>();
@@ -51,4 +51,86 @@ public class Store {
           this.address = address;
           this.county = county;
      }
+
+
+     public int getStoreId() {
+          return this.storeId;
+     }
+
+     public void setStoreId(int storeId) {
+          this.storeId = storeId;
+     }
+
+     public String getAddress() {
+          return this.address;
+     }
+
+     public void setAddress(String address) {
+          this.address = address;
+     }
+
+     public String getCounty() {
+          return this.county;
+     }
+
+     public void setCounty(String county) {
+          this.county = county;
+     }
+
+     public Inventory getInventory() {
+          return this.inventory;
+     }
+
+     public void setInventory(Inventory inventory) {
+          this.inventory = inventory;
+     }
+
+     public List<Customer> getFavoriteByCustomer() {
+          return this.favoriteByCustomer;
+     }
+
+     public void setFavoriteByCustomer(List<Customer> favoriteByCustomer) {
+          this.favoriteByCustomer = favoriteByCustomer;
+     }
+
+     public List<Scheduler> getScheduler() {
+          return this.scheduler;
+     }
+
+     public void setScheduler(List<Scheduler> scheduler) {
+          this.scheduler = scheduler;
+     }
+
+     public List<Shipment> getShipments() {
+          return this.shipments;
+     }
+
+     public void setShipments(List<Shipment> shipments) {
+          this.shipments = shipments;
+     }
+
+     public List<Owner> getOwners() {
+          return this.owners;
+     }
+
+     public void setOwners(List<Owner> owners) {
+          this.owners = owners;
+     }
+
+     public LocationManager getLocationManager() {
+          return this.locationManager;
+     }
+
+     public void setLocationManager(LocationManager locationManager) {
+          this.locationManager = locationManager;
+     }
+
+     public List<Receipt> getReceipts() {
+          return this.receipts;
+     }
+
+     public void setReceipts(List<Receipt> receipts) {
+          this.receipts = receipts;
+     }
+
 }

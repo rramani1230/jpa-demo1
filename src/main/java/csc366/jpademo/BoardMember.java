@@ -25,4 +25,34 @@ public class BoardMember extends CompanyPerson {
           this.boardStrategy = boardStrategy;
           this.hasDegree = hasDegree;
      }
+
+
+     public String getBoardStrategy() {
+          return this.boardStrategy;
+     }
+
+     public void setBoardStrategy(String boardStrategy) {
+          this.boardStrategy = boardStrategy;
+     }
+
+     public boolean isHasDegree() {
+          return this.hasDegree;
+     }
+
+     public boolean getHasDegree() {
+          return this.hasDegree;
+     }
+
+     public void setHasDegree(boolean hasDegree) {
+          this.hasDegree = hasDegree;
+     }
+
+     public List<RegionalManager> getRegionalManagers() {
+          return this.regionalManagers;
+     }
+
+     public void setRegionalManagers(List<RegionalManager> regionalManagers) {
+          this.regionalManagers = regionalManagers;
+     }
+
 }

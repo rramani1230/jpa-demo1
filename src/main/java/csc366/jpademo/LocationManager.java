@@ -18,4 +18,22 @@ public class LocationManager extends Manager{
      String dateOfBirth, String phoneNo) {
           super(id,name,email,dateOfBirth,phoneNo);
      }
+
+
+     public RegionalManager getRegionalManager() {
+          return this.regionalManager;
+     }
+
+     public void setRegionalManager(RegionalManager regionalManager) {
+          this.regionalManager = regionalManager;
+     }
+
+     public Store getStore() {
+          return this.store;
+     }
+
+     public void setStore(Store store) {
+          this.store = store;
+     }
+
 }

@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Table(name = "CompanyPerson",
 uniqueConstraints = @UniqueConstraint(columnNames={
-     "id", "name", "email", "phoneNo"
+     "id"
 }))
 //The companyPerson super class
 
@@ -16,6 +16,7 @@ uniqueConstraints = @UniqueConstraint(columnNames={
 public abstract class CompanyPerson {
 
      @Id
+     @NotNull
      private int id;
 
      @NotNull

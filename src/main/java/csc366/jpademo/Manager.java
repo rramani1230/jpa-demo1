@@ -17,4 +17,6 @@ public abstract class Manager extends CompanyPerson{
           super(id,name,email,dateOfBirth,phoneNo);
      }
 
+          
+
 }

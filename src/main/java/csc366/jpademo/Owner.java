@@ -21,4 +21,6 @@ public class Owner extends CompanyPerson {
      public void setStores(List<Store> stores) {
           this.stores = stores;
      }
+
+     
 }

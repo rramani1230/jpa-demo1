@@ -13,6 +13,7 @@ public class Inventory {
 
      @Id
      @GeneratedValue(strategy=GenerationType.AUTO)
+     @NotNull
      private int entryId;
 
      @OneToOne
@@ -21,6 +22,7 @@ public class Inventory {
      @ManyToOne
      private Item item;
 
+     @NotNull
      private int quantity;
 
      public Inventory (Store strore, Item item, int quantity) {

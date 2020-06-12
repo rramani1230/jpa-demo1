@@ -35,4 +35,42 @@ public class Customer extends CompanyPerson{
           this.home_store = home_store;
           this.favorite_item = favorite_item;
      }
+
+
+     public boolean isTruck_driver() {
+          return this.truck_driver;
+     }
+
+     public boolean getTruck_driver() {
+          return this.truck_driver;
+     }
+
+     public void setTruck_driver(boolean truck_driver) {
+          this.truck_driver = truck_driver;
+     }
+
+     public Store getHome_store() {
+          return this.home_store;
+     }
+
+     public void setHome_store(Store home_store) {
+          this.home_store = home_store;
+     }
+
+     public Item getFavorite_item() {
+          return this.favorite_item;
+     }
+
+     public void setFavorite_item(Item favorite_item) {
+          this.favorite_item = favorite_item;
+     }
+
+     public List<Receipt> getReceipts() {
+          return this.receipts;
+     }
+
+     public void setReceipts(List<Receipt> receipts) {
+          this.receipts = receipts;
+     }
+
 }
