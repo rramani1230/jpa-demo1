@@ -27,54 +27,23 @@ public class Item {
      @NotNull
      private boolean prepackaged;
 
+     @OneToMany
+     private List<Shipment> shipments = new ArrayList<Shipment>();
+
      @NotNull
      @ManyToMany
      private List<Receipt> receipts = new ArrayList<>();
+
+     @OneToMany
+     private List<Inventory> inventory = new ArrayList<>();
+
+     @OneToMany
+     private List<Customer> favories = new ArrayList<>();
 
      public Item (int itemId, String itemName, double itemCost, boolean prepackaged) {
           this.itemId = itemId;
           this.itemName = itemName;
           this.itemCost = itemCost;
           this.prepackaged = prepackaged;
-     }
-
-     public int getItemId () {
-          return this.itemId;
-     }
-
-     public void setItemId (int itemId) {
-          this.itemId = itemId;
-     }
-
-     public String getItemName () {
-          return this.itemName;
-     }
-
-     public void setItemName (String itemName) {
-          this.itemName = itemName;
-     }
-
-     public double getItemCost () {
-          return this.itemCost;
-     }
-
-     public void setItemCost (double itemCost) {
-          this.itemCost = itemCost;
-     }
-
-     public boolean getPrepackaged () {
-          return this.prepackaged;
-     }
-
-     public void setPrepackaged (boolean prepackaged) {
-          this.prepackaged = prepackaged;
-     }
-
-     public List<Receipt> getReceipts () {
-          return this.receipts;
-     }
-
-     public void setReceipts (List<Receipt> receipts) {
-          this.receipts = receipts;
      }
 }

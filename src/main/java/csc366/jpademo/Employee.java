@@ -1,8 +1,6 @@
 package csc366.jpademo;
 
-import java.util.Set;
-import java.util.HashSet;
-import java.util.StringJoiner;
+import java.util.*;
 
 import javax.persistence.*;
 
@@ -14,6 +12,9 @@ public class Employee extends CompanyPerson {
      private String region;
      private boolean injured;
 
+     @OneToMany
+     private List<Scheduler> scheduler = new ArrayList<Scheduler>();
+
 
      public Employee (int id, String name, String email,
      String dateOfBirth, String phoneNo, String region, boolean injured) {
@@ -21,21 +22,4 @@ public class Employee extends CompanyPerson {
           this.region = region;
           this.injured = injured;
      }
-
-     public boolean getInjured() {
-          return this.injured;
-     }
-
-     public void setInjured(boolean injured) {
-          this.injured = injured;
-     }
-
-     public String getRegion() {
-          return this.region;
-     }
-
-     public void setRegion(String region) {
-          this.region = region;
-     }
-
 }

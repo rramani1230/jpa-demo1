@@ -27,49 +27,6 @@ public class Receipt {
      @ManyToMany(mappedBy = "receipts")
      private List<Item> items = new ArrayList<>();
 
-     @ManyToMany(mappedBy = "receipts")
-     private List<Store> store = new ArrayList<>();
-
-
-
-
-     public int getReceiptId() {
-          return this.receiptId;
-     }
-
-     public void setReceiptId(int receiptId) {
-          this.receiptId = receiptId;
-     }
-
-     public Date getDate() {
-          return this.date;
-     }
-
-     public void setDate(Date date) {
-          this.date = date;
-     }
-
-     public Customer getCustomer() {
-          return this.customer;
-     }
-
-     public void setCustomer(Customer customers) {
-          this.customer = customer;
-     }
-
-     public List<Item> getItems() {
-          return this.items;
-     }
-
-     public void setItems(List<Item> items) {
-          this.items = items;
-     }
-
-     public List<Store> getStore() {
-          return this.store;
-     }
-
-     public void setStore(List<Store> store) {
-          this.store = store;
-     }
+     @ManyToOne
+     private Store store;
 }

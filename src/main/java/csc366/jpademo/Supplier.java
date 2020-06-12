@@ -29,6 +29,10 @@ public class Supplier {
      private String licenseNo;
      private double qualityRating;
 
+     @OneToMany
+     private List<Shipment> shipments = new ArrayList<Shipment>();
+
+
      public Supplier (int supplierId, String supplierName, String supplierAddress, String supplierCounty,
      String licenseNo, double qualityRating) {
           this.supplierId = supplierId;
@@ -37,63 +41,5 @@ public class Supplier {
           this.supplierCounty = supplierCounty;
           this.licenseNo = licenseNo;
           this.qualityRating = qualityRating;
-     }
-
-
-
-     @NotNull
-     @OneToMany(mappedBy = "supplier")
-     private List<Shipment> shipments = new ArrayList<>();
-
-     public int getSupplierId () {
-          return this.supplierId;
-     }
-
-     public void setSupplierId (int supplierId) {
-          this.supplierId = supplierId;
-     }
-
-     public String getSupplierAddress () {
-          return this.supplierAddress;
-     }
-
-     public void setSupplierAddress (String supplierAddress) {
-          this.supplierAddress = supplierAddress;
-     }
-
-     public String getSupplierCounty () {
-          return this.supplierCounty;
-     }
-
-     public void setSupplierCounty (String supplierCounty) {
-          this.supplierCounty = supplierCounty;
-     }
-
-     public String getLicenseNo () {
-          return this.licenseNo;
-     }
-
-     public void setLicenseNo (String licenseNo) {
-          this.licenseNo = licenseNo;
-     }
-
-     public double getQualityRating () {
-          return this.qualityRating;
-     }
-
-     public void setQualityRating (double qualityRating) {
-          this.qualityRating = qualityRating;
-     }
-
-     public List<Shipment> getShipments () {
-          return this.shipments;
-     }
-
-     public void setShipments (List<Shipment> shipments) {
-          this.shipments = shipments;
-     }
-     
-     public String toString () {
-          return "Supplier Name = " + this.supplierName; 
      }
 }

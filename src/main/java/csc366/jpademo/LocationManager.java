@@ -11,19 +11,11 @@ public class LocationManager extends Manager{
      private RegionalManager regionalManager;
      // @OneToOne(mappedBy = "storeId")
 
-     private int store;
+     @OneToOne
+     private Store store;
 
      public LocationManager (int id, String name, String email,
      String dateOfBirth, String phoneNo) {
           super(id,name,email,dateOfBirth,phoneNo);
      }
-
-    public int getStore() {
-         return this.store;
-    }
-
-    public void setStore(int s) {
-         this.store = s;
-    }
-
 }
