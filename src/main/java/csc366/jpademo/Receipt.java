@@ -19,16 +19,23 @@ public class Receipt {
      private int receiptId;
 
      @NotNull
-     private Date date;
+     private String date;
 
      @ManyToOne
      private Customer customer;
 
      @ManyToMany(mappedBy = "receipts")
-     private List<Item> items = new ArrayList<>();
+     private List<Item> item = new ArrayList<>();
 
      @ManyToOne
      private Store store;
+
+     public Receipt (String date, Customer customer, Item item, Store store) {
+          this.date = date;
+          this.customer = customer;
+          this.item.add(item);
+          this.store = store;
+     }
 
 
      public int getReceiptId() {
@@ -39,11 +46,11 @@ public class Receipt {
           this.receiptId = receiptId;
      }
 
-     public Date getDate() {
+     public String getDate() {
           return this.date;
      }
 
-     public void setDate(Date date) {
+     public void setDate(String date) {
           this.date = date;
      }
 
@@ -56,11 +63,11 @@ public class Receipt {
      }
 
      public List<Item> getItems() {
-          return this.items;
+          return this.item;
      }
 
-     public void setItems(List<Item> items) {
-          this.items = items;
+     public void setItems(List<Item> item) {
+          this.item = item;
      }
 
      public Store getStore() {

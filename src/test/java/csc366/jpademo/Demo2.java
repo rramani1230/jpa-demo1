@@ -354,390 +354,408 @@ public class Demo2 {
 	   entityManager.persist(sh24);
 	   Shipment sh25 = new Shipment(sup204,s7,item16,9,"04/11/2020");
 	   entityManager.persist(sh25);
+
+	   //Receipt
+	   Receipt receipt1 = new Receipt("04/12/2020", c1, item1, s1);
+	   entityManager.persist(receipt1);
+	   Receipt receipt2 = new Receipt("04/13/2020", c2, item13, s4);
+	   entityManager.persist(receipt2);
+	   Receipt receipt3 = new Receipt("04/14/2020", c3, item21, s2);
+	   entityManager.persist(receipt3);
+	   Receipt receipt4 = new Receipt("04/15/2020", c4, item24, s8);
+	   entityManager.persist(receipt4);
+	   Receipt receipt5 = new Receipt("04/16/2020", c5, item11, s3);
+	   entityManager.persist(receipt5);
+	   Receipt receipt6 = new Receipt("04/17/2020", c6, item11, s4);
+	   entityManager.persist(receipt6);
+	   Receipt receipt7 = new Receipt("04/18/2020", c7, item15, s5);
+	   entityManager.persist(receipt7);
+	   Receipt receipt8 = new Receipt("04/19/2020", c8, item17, s6);
+	   entityManager.persist(receipt8);
+	   Receipt receipt9 = new Receipt("04/20/2020", c9, item19, s7);
+	   entityManager.persist(receipt9);
+	   Receipt receipt10 = new Receipt("04/21/2020", c1, item14, s8);
+	   entityManager.persist(receipt10);
+
 	}
 
 
-    @Test
-    @Order(0)
-    public void testNone() {
+    // @Test
+    // @Order(0)
+    // public void supplierQuery1() {
+	//     List<Supplier> sups = entityManager.createQuery(
+    //          "select s from Supplier s where s.qualityRating > 4.0",
+    //          Supplier.class).getResultList();
+    
+	// 	for (int i = 0; i < sups.size(); i++) {
+	// 		System.out.println(sups.get(i));
+	// 	}
+	// }
 
-    }
-//
-//     @Test
-//     @Order(0)
-    // Find all suppliers who have a quality rating above 4.0
-    public void supplierQuery1() {
-	    List<Supplier> sups = entityManager.createQuery(
-             "select s from Supplier s where s.qualityRating > 4.0",
-             Supplier.class).getResultList();
+    // public void supplierQuery2() {
+	// List<Supplier> sups = entityManager.createQuery(
+	// 	   "select s from Supplier s, Shipment sh where s.supplier_id = 204",
+	// 	   Supplier.class).getResultList();
     
-		for (int i = 0; i < sups.size(); i++) {
-			System.out.println(sups.get(i));
-		}
-	}
+	//     for (int i = 0; i < sups.size(); i++) {
+	// 	    System.out.println(sups.get(i));
+	//     }
+    // }
+    
+    // @Test
+    // @Order(4)
+    // public void findSuppliersByCounty() {
+    //     List<Supplier> sups = entityManager.createQuery(
+    //         "select s from Supplier s where s.supplierCounty = 'San Luis Obispo County'",
+    //         Supplier.class).getResultList();
+    //     System.out.println(sups.get(0));
+    // }
+    
+    // @Test
+    // @Order(5)
+    // public void findSuppliersByLicenseNo() {
+    //     List<Supplier> sups = entityManager.createQuery(
+    //         "select s from Supplier s where s.licenseNo = '12345'",
+    //         Supplier.class).getResultList();
+    //     System.out.println(sups.get(0));
+    // }
+    
+    // @Test
+    // @Order(6)
+    // public void findSuppliersByAddress() {
+    //     List<Supplier> sups = entityManager.createQuery(
+    //         "select s from Supplier s where s.supplierAddress = '123 Rainbow Way'",
+    //         Supplier.class).getResultList();
+    //     System.out.println(sups.get(0));
+    // }
+    
+    // @Test
+    // @Order(7)
+    // public void findSuppliersByName() {
+    //     List<Supplier> sups = entityManager.createQuery(
+    //         "select s from Supplier s where s.supplierName = 'AmazingSuppliers'",
+    //         Supplier.class).getResultList();
+    //     System.out.println(sups.get(0));
+    // }
+    
+    // @Test
+    // @Order(8)
+    // public void findSuppliersByRating() {
+    //     List<Supplier> sups = entityManager.createQuery(
+    //         "select s from Supplier s where s.qualityRating > 4.8",
+    //         Supplier.class).getResultList();
+    //     System.out.println(sups.get(0));
+    // }
 
-    public void supplierQuery2() {
-	List<Supplier> sups = entityManager.createQuery(
-		   "select s from Supplier s, Shipment sh where s.supplier_id = 204",
-		   Supplier.class).getResultList();
-    
-	    for (int i = 0; i < sups.size(); i++) {
-		    System.out.println(sups.get(i));
-	    }
-    }
-    
-    @Test
-    @Order(4)
-    public void findSuppliersByCounty() {
-        List<Supplier> sups = entityManager.createQuery(
-            "select s from Supplier s where s.supplierCounty = 'San Luis Obispo County'",
-            Supplier.class).getResultList();
-        System.out.println(sups.get(0));
-    }
-    
-    @Test
-    @Order(5)
-    public void findSuppliersByLicenseNo() {
-        List<Supplier> sups = entityManager.createQuery(
-            "select s from Supplier s where s.licenseNo = '12345'",
-            Supplier.class).getResultList();
-        System.out.println(sups.get(0));
-    }
-    
-    @Test
-    @Order(6)
-    public void findSuppliersByAddress() {
-        List<Supplier> sups = entityManager.createQuery(
-            "select s from Supplier s where s.supplierAddress = '123 Rainbow Way'",
-            Supplier.class).getResultList();
-        System.out.println(sups.get(0));
-    }
-    
-    @Test
-    @Order(7)
-    public void findSuppliersByName() {
-        List<Supplier> sups = entityManager.createQuery(
-            "select s from Supplier s where s.supplierName = 'AmazingSuppliers'",
-            Supplier.class).getResultList();
-        System.out.println(sups.get(0));
-    }
-    
-    @Test
-    @Order(8)
-    public void findSuppliersByRating() {
-        List<Supplier> sups = entityManager.createQuery(
-            "select s from Supplier s where s.qualityRating > 4.8",
-            Supplier.class).getResultList();
-        System.out.println(sups.get(0));
-    }
+	// public void findTruckDrivers() {
+    //     List<Customer> cust = entityManager.createQuery(
+    //         "select c from Customer c where c.truck_driver = true",
+    //         Customer.class).getResultList();
+    //     System.out.println(cust.get(0));
+	// }
 
-	public void findTruckDrivers() {
-        List<Customer> cust = entityManager.createQuery(
-            "select c from Customer c where c.truck_driver = true",
-            Customer.class).getResultList();
-        System.out.println(cust.get(0));
-	}
-
-	@Test
-    @Order(7)
-    public void findMostPopularItemID() {
-        List<Customer> custs1 = entityManager.createQuery(
-            "SELECT c1 FROM Customer c1 where c1.truck_driver = true and c1.favorite_item = 1",
-            Customer.class).getResultList();
-        System.out.println(custs1.get(0));
-	}
-	@Test
-    @Order(8)
-    public void findAllEmpsInRegion() {
-        List<Employee> emps = entityManager.createQuery(
-			"select e from Employee e where e.region = 'Rockaway'",
-            Employee.class).getResultList();
-        System.out.println(emps.get(0));
-    }
-    @Test
-    @Order(9)
-    public void findAllEmpsID() {
-        List<Employee> emps = entityManager.createQuery(
-			"select e from Employee e where e.id = 509",
-            Employee.class).getResultList();
-        System.out.println(emps.get(0));
-	}
+	// @Test
+    // @Order(7)
+    // public void findMostPopularItemID() {
+    //     List<Customer> custs1 = entityManager.createQuery(
+    //         "SELECT c1 FROM Customer c1 where c1.truck_driver = true and c1.favorite_item = 1",
+    //         Customer.class).getResultList();
+    //     System.out.println(custs1.get(0));
+	// }
+	// @Test
+    // @Order(8)
+    // public void findAllEmpsInRegion() {
+    //     List<Employee> emps = entityManager.createQuery(
+	// 		"select e from Employee e where e.region = 'Rockaway'",
+    //         Employee.class).getResultList();
+    //     System.out.println(emps.get(0));
+    // }
+    // @Test
+    // @Order(9)
+    // public void findAllEmpsID() {
+    //     List<Employee> emps = entityManager.createQuery(
+	// 		"select e from Employee e where e.id = 509",
+    //         Employee.class).getResultList();
+    //     System.out.println(emps.get(0));
+	// }
 	
-	@Test
-    @Order(10)
-    public void findAllEmpsName() {
-        List<Employee> emps = entityManager.createQuery(
-			"select e from Employee e where e.name = 'Adele Washington'",
-			Employee.class).getResultList();
-        System.out.println(emps.get(0));
-	}
+	// @Test
+    // @Order(10)
+    // public void findAllEmpsName() {
+    //     List<Employee> emps = entityManager.createQuery(
+	// 		"select e from Employee e where e.name = 'Adele Washington'",
+	// 		Employee.class).getResultList();
+    //     System.out.println(emps.get(0));
+	// }
 	
-    @Test
-    @Order(11)
-    public void findAllEmpsEmail() {
-        List<Employee> emps = entityManager.createQuery(
-			"select e from Employee e where e.email = 'MaysaBeaumont@gmail.com'",
-            Employee.class).getResultList();
-        System.out.println(emps.get(0));
-    }
-    @Test
-    @Order(12)
-    public void findAllEmpsDOB() {
-        List<Employee> emps = entityManager.createQuery(
-			"select e from Employee e where e.dateOfBirth = '2002-04-18'",
-			Employee.class).getResultList();
-        System.out.println(emps.get(0));
-    }
-    @Test
-    @Order(13)
-    public void findAllEmpsPhoneNum() {
-        List<Employee> emps = entityManager.createQuery(
-			"select e from Employee e where e.phoneNo = '207-555-0160'",
-			Employee.class).getResultList();
-        System.out.println(emps.get(0));
-	}
+    // @Test
+    // @Order(11)
+    // public void findAllEmpsEmail() {
+    //     List<Employee> emps = entityManager.createQuery(
+	// 		"select e from Employee e where e.email = 'MaysaBeaumont@gmail.com'",
+    //         Employee.class).getResultList();
+    //     System.out.println(emps.get(0));
+    // }
+    // @Test
+    // @Order(12)
+    // public void findAllEmpsDOB() {
+    //     List<Employee> emps = entityManager.createQuery(
+	// 		"select e from Employee e where e.dateOfBirth = '2002-04-18'",
+	// 		Employee.class).getResultList();
+    //     System.out.println(emps.get(0));
+    // }
+    // @Test
+    // @Order(13)
+    // public void findAllEmpsPhoneNum() {
+    //     List<Employee> emps = entityManager.createQuery(
+	// 		"select e from Employee e where e.phoneNo = '207-555-0160'",
+	// 		Employee.class).getResultList();
+    //     System.out.println(emps.get(0));
+	// }
 	
-	@Test
-    @Order(14)
-    public void findAllEmpsInjured() {
-        List<Employee> emps = entityManager.createQuery(
-			"select e from Employee e where e.injured = true",
-            Employee.class).getResultList();
-        System.out.println(emps.get(0));
-	}
-	@Test
-	@Order(15)
-	public void findShipmentByDate() {
-		List<Shipment> shipments = entityManager.createQuery(
-			"select s from Shipment s where s.date = '06/11/2020'",
-			Shipment.class).getResultList();
-		System.out.println(shipments.get(0));
-	}
-	@Test
-	@Order(16)
-	public void findShipmentByStoreId() {
-		List<Shipment> shipments = entityManager.createQuery(
-			"select s from Shipment s where s.store = 5",
-			Shipment.class).getResultList();
-		System.out.println(shipments.get(0));
-	}
-	@Test
-	@Order(17)
-	public void findShipmentByItemAndQuantity() {
-		List<Shipment> shipments = entityManager.createQuery(
-			"select s from Shipment s where s.item = 23 and s.quantity = 10",
-			Shipment.class).getResultList();
-		System.out.println(shipments.get(0));
-	}
-	@Test
-	@Order(18)
-	public void findShipmentBySupplier() {
-		List<Shipment> shipments = entityManager.createQuery(
-			"select s from Shipment s where s.supplier != 202",
-			Shipment.class).getResultList();
-		System.out.println(shipments.get(0));
-	}
-	@Test
-	@Order(19)
-	public void findInventoryByStore() {
-		List<Inventory> inventory = entityManager.createQuery(
-			"select i from Inventory i where i.store != 5",
-			Inventory.class).getResultList();
-		System.out.println(inventory.get(0));
-	}
-	@Test
-	@Order(20)
-	public void findInventoryByItemAndQuantity() {
-		List<Inventory> inventory = entityManager.createQuery(
-			"select i from Inventory i where i.item = 2 and i.quantity = 5",
-			Inventory.class).getResultList();
-		System.out.println(inventory.get(0));
-	}
-	@Test
-	@Order(21)
-	public void findStoreByAddressAndCounty() {
-		List<Store> stores = entityManager.createQuery(
-			"select s from Store s where s.address = '123 Sunshine Way' and s.county = 'SLO County'",
-			Store.class).getResultList();
-		System.out.println(stores.get(0));
-	}
-	@Test
-	@Order(22)
-	public void findStoreByInventoryAndLocationManager() {
-		List<Store> stores = entityManager.createQuery(
-			"select s from Store s where s.id = 8",
-			Store.class).getResultList();
-		System.out.println(stores.get(0));
-	}
-	@Test
-	@Order(23)
-	public void findSchedulerByEmployeeAndStore() {
-		List<Scheduler> schedulers = entityManager.createQuery(
-			"select s from Scheduler s where s.employee = 506 and s.store = 5",
-			Scheduler.class).getResultList();
-		System.out.println(schedulers.get(0));
-	}
-	@Test
-	@Order(24)
-	public void findSchedulerByWeek() {
-		List<Scheduler> schedulers = entityManager.createQuery(
-			"select s from Scheduler s where s.week = 'Week 1'",
-			Scheduler.class).getResultList();
-		System.out.println(schedulers.get(0));
-	}
-	@Test
-	@Order(25)
-	public void findSchedulerByHours() {
-		List<Scheduler> schedulers = entityManager.createQuery(
-			"select s from Scheduler s where s.hours > 5",
-			Scheduler.class).getResultList();
-		System.out.println(schedulers.get(0));
-	}
-	@Test
-	@Order(26)
-	public void findItemByPrepackaged() {
-		List<Item> items = entityManager.createQuery(
-			"select i from Item i where prepackaged = true",
-			Item.class).getResultList();
-		System.out.println(items.get(0));
-	}
-	@Test
-	@Order(27)
-	public void findItemByItemCost() {
-		List<Item> items = entityManager.createQuery(
-			"select i from Item i where i.itemCost < 20",
-			Item.class).getResultList();
-		System.out.println(items.get(0));
-	}
-	@Test
-	@Order(28)
-	public void findItemByItemName() {
-		List<Item> items = entityManager.createQuery(
-			"select i from Item i where i.itemName = 'Item20'",
-			Item.class).getResultList();
-		System.out.println(items.get(0));
-	}
-	@Test
-	@Order(29)
-	public void findLocationManagerByName() {
-		List<LocationManager> managers = entityManager.createQuery(
-			"select l from LocationManager l where l.name = 'locman3'",
-			LocationManager.class).getResultList();
-		System.out.println(managers.get(0));
-	}
-	@Test
-	@Order(30)
-	public void findLocationManagerByEmail() {
-		List<LocationManager> managers = entityManager.createQuery(
-			"select l from LocationManager l where l.email = 'lm4@gmail.com'",
-			LocationManager.class).getResultList();
-		System.out.println(managers.get(0));
-	}
-	@Test
-	@Order(31)
-	public void findLocationManagerByDateOfBirth() {
-		List<LocationManager> managers = entityManager.createQuery(
-			"select l from LocationManager l where l.dateOfBirth = '1999-07-12'",
-			LocationManager.class).getResultList();
-		System.out.println(managers.get(0));
-	}
-	@Test
-	@Order(32)
-	public void findLocationManagerByPhoneNo() {
-		List<LocationManager> managers = entityManager.createQuery(
-			"select l from LocationManager l where l.phoneNo = '136-028-2309'",
-			LocationManager.class).getResultList();
-		System.out.println(managers.get(0));
-	}
-	@Test
-	@Order(33)
-	public void findRegionalManagerByName() {
-		List<RegionalManager> managers = entityManager.createQuery(
-			"select r from RegionalManager r where r.name = 'Jim Halpert'",
-			RegionalManager.class).getResultList();
-		System.out.println(managers.get(0));
-	}
-	@Test
-	@Order(34)
-	public void findRegionalManagerByEmail() {
-		List<RegionalManager> managers = entityManager.createQuery(
-			"select r from RegionalManager r where r.email = 'jh@domain'",
-			RegionalManager.class).getResultList();
-		System.out.println(managers.get(0));
-	}
-	@Test
-	@Order(35)
-	public void findRegionalManagerByDateOfBirth() {
-		List<RegionalManager> managers = entityManager.createQuery(
-			"select r from RegionalManager r where r.dateOfBirth = '1994-09-09'",
-			RegionalManager.class).getResultList();
-		System.out.println(managers.get(0));
-	}
-	@Test
-	@Order(36)
-	public void findRegionalManagerByPhoneNo() {
-		List<RegionalManager> managers = entityManager.createQuery(
-			"select r from RegionalManager r where r.phoneNo = '2020000000'",
-			RegionalManager.class).getResultList();
-		System.out.println(managers.get(0));
-	}
-	@Test
-	@Order(37)
-	public void findOwnerByName() {
-		List<Owner> owners = entityManager.createQuery(
-			"select o from Owner o where o.name = 'Richard Hendrix'",
-			Owner.class).getResultList();
-		System.out.println(owners.get(0));
-	}
-	@Test
-	@Order(38)
-	public void findOwnerByEmail() {
-		List<Owner> owners = entityManager.createQuery(
-			"select o from Owner o where o.email = 'dinesh@domain'",
-			Owner.class).getResultList();
-		System.out.println(owners.get(0));
-	}
-	@Test
-	@Order(39)
-	public void findOwnerByDateOfBirth() {
-		List<Owner> owners = entityManager.createQuery(
-			"select o from Owner o where o.dateOfBirth = '1987-05-29'",
-			Owner.class).getResultList();
-		System.out.println(owners.get(0));
-	}
-	@Test
-	@Order(40)
-	public void findOwnerByPhoneNo() {
-		List<Owner> owners = entityManager.createQuery(
-			"select o from Owner o where o.phoneNo = '415-500-0004'",
-			Owner.class).getResultList();
-		System.out.println(owners.get(0));
-	}
-	BoardMember bm1 = new BoardMember(351, "Joe Sanchez", "joe@domain", "1991-09-09", "4150000000", "Candy and Cookies", true);
-	@Test
-	@Order(41)
-	public void findBoardMemberByNameEmailDoBPhoneNo() {
-		List<BoardMember> boardMembers = entityManager.createQuery(
-			"select b from BoardMember b where b.name = 'Joe Sanchez' and b.email = 'joe@domain' and b.dateOfBirth = '1991-09-09' and b.phoneNo = '4150000000'",
-			BoardMember.class).getResultList();
-		System.out.println(boardMembers.get(0));
-	}
-	@Test
-	@Order(42)
-	public void findBoardMemberHasDegree() {
-		List<BoardMember> boardMembers = entityManager.createQuery(
-			"select b from BoardMember b where b.hasDegree = true",
-			BoardMember.class).getResultList();
-		System.out.println(boardMembers.get(0));
-	}
-	@Test
-	@Order(43)
-	public void findBoardMemberBoardStrategy() {
-		List<BoardMember> boardMembers = entityManager.createQuery(
-			"select b from BoardMember b where b.boardStrategy = 'Beers and Booze'",
-			BoardMember.class).getResultList();
-		System.out.println(boardMembers.get(0));
-	}
+	// @Test
+    // @Order(14)
+    // public void findAllEmpsInjured() {
+    //     List<Employee> emps = entityManager.createQuery(
+	// 		"select e from Employee e where e.injured = true",
+    //         Employee.class).getResultList();
+    //     System.out.println(emps.get(0));
+	// }
+	// @Test
+	// @Order(15)
+	// public void findShipmentByDate() {
+	// 	List<Shipment> shipments = entityManager.createQuery(
+	// 		"select s from Shipment s where s.date = '06/11/2020'",
+	// 		Shipment.class).getResultList();
+	// 	System.out.println(shipments.get(0));
+	// }
+	// @Test
+	// @Order(16)
+	// public void findShipmentByStoreId() {
+	// 	List<Shipment> shipments = entityManager.createQuery(
+	// 		"select s from Shipment s where s.store = 5",
+	// 		Shipment.class).getResultList();
+	// 	System.out.println(shipments.get(0));
+	// }
+	// @Test
+	// @Order(17)
+	// public void findShipmentByItemAndQuantity() {
+	// 	List<Shipment> shipments = entityManager.createQuery(
+	// 		"select s from Shipment s where s.item = 23 and s.quantity = 10",
+	// 		Shipment.class).getResultList();
+	// 	System.out.println(shipments.get(0));
+	// }
+	// @Test
+	// @Order(18)
+	// public void findShipmentBySupplier() {
+	// 	List<Shipment> shipments = entityManager.createQuery(
+	// 		"select s from Shipment s where s.supplier != 202",
+	// 		Shipment.class).getResultList();
+	// 	System.out.println(shipments.get(0));
+	// }
+	// @Test
+	// @Order(19)
+	// public void findInventoryByStore() {
+	// 	List<Inventory> inventory = entityManager.createQuery(
+	// 		"select i from Inventory i where i.store != 5",
+	// 		Inventory.class).getResultList();
+	// 	System.out.println(inventory.get(0));
+	// }
+	// @Test
+	// @Order(20)
+	// public void findInventoryByItemAndQuantity() {
+	// 	List<Inventory> inventory = entityManager.createQuery(
+	// 		"select i from Inventory i where i.item = 2 and i.quantity = 5",
+	// 		Inventory.class).getResultList();
+	// 	System.out.println(inventory.get(0));
+	// }
+	// @Test
+	// @Order(21)
+	// public void findStoreByAddressAndCounty() {
+	// 	List<Store> stores = entityManager.createQuery(
+	// 		"select s from Store s where s.address = '123 Sunshine Way' and s.county = 'SLO County'",
+	// 		Store.class).getResultList();
+	// 	System.out.println(stores.get(0));
+	// }
+	// @Test
+	// @Order(22)
+	// public void findStoreByInventoryAndLocationManager() {
+	// 	List<Store> stores = entityManager.createQuery(
+	// 		"select s from Store s where s.id = 8",
+	// 		Store.class).getResultList();
+	// 	System.out.println(stores.get(0));
+	// }
+	// @Test
+	// @Order(23)
+	// public void findSchedulerByEmployeeAndStore() {
+	// 	List<Scheduler> schedulers = entityManager.createQuery(
+	// 		"select s from Scheduler s where s.employee = 506 and s.store = 5",
+	// 		Scheduler.class).getResultList();
+	// 	System.out.println(schedulers.get(0));
+	// }
+	// @Test
+	// @Order(24)
+	// public void findSchedulerByWeek() {
+	// 	List<Scheduler> schedulers = entityManager.createQuery(
+	// 		"select s from Scheduler s where s.week = 'Week 1'",
+	// 		Scheduler.class).getResultList();
+	// 	System.out.println(schedulers.get(0));
+	// }
+	// @Test
+	// @Order(25)
+	// public void findSchedulerByHours() {
+	// 	List<Scheduler> schedulers = entityManager.createQuery(
+	// 		"select s from Scheduler s where s.hours > 5",
+	// 		Scheduler.class).getResultList();
+	// 	System.out.println(schedulers.get(0));
+	// }
+	// @Test
+	// @Order(26)
+	// public void findItemByPrepackaged() {
+	// 	List<Item> items = entityManager.createQuery(
+	// 		"select i from Item i where prepackaged = true",
+	// 		Item.class).getResultList();
+	// 	System.out.println(items.get(0));
+	// }
+	// @Test
+	// @Order(27)
+	// public void findItemByItemCost() {
+	// 	List<Item> items = entityManager.createQuery(
+	// 		"select i from Item i where i.itemCost < 20",
+	// 		Item.class).getResultList();
+	// 	System.out.println(items.get(0));
+	// }
+	// @Test
+	// @Order(28)
+	// public void findItemByItemName() {
+	// 	List<Item> items = entityManager.createQuery(
+	// 		"select i from Item i where i.itemName = 'Item20'",
+	// 		Item.class).getResultList();
+	// 	System.out.println(items.get(0));
+	// }
+	// @Test
+	// @Order(29)
+	// public void findLocationManagerByName() {
+	// 	List<LocationManager> managers = entityManager.createQuery(
+	// 		"select l from LocationManager l where l.name = 'locman3'",
+	// 		LocationManager.class).getResultList();
+	// 	System.out.println(managers.get(0));
+	// }
+	// @Test
+	// @Order(30)
+	// public void findLocationManagerByEmail() {
+	// 	List<LocationManager> managers = entityManager.createQuery(
+	// 		"select l from LocationManager l where l.email = 'lm4@gmail.com'",
+	// 		LocationManager.class).getResultList();
+	// 	System.out.println(managers.get(0));
+	// }
+	// @Test
+	// @Order(31)
+	// public void findLocationManagerByDateOfBirth() {
+	// 	List<LocationManager> managers = entityManager.createQuery(
+	// 		"select l from LocationManager l where l.dateOfBirth = '1999-07-12'",
+	// 		LocationManager.class).getResultList();
+	// 	System.out.println(managers.get(0));
+	// }
+	// @Test
+	// @Order(32)
+	// public void findLocationManagerByPhoneNo() {
+	// 	List<LocationManager> managers = entityManager.createQuery(
+	// 		"select l from LocationManager l where l.phoneNo = '136-028-2309'",
+	// 		LocationManager.class).getResultList();
+	// 	System.out.println(managers.get(0));
+	// }
+	// @Test
+	// @Order(33)
+	// public void findRegionalManagerByName() {
+	// 	List<RegionalManager> managers = entityManager.createQuery(
+	// 		"select r from RegionalManager r where r.name = 'Jim Halpert'",
+	// 		RegionalManager.class).getResultList();
+	// 	System.out.println(managers.get(0));
+	// }
+	// @Test
+	// @Order(34)
+	// public void findRegionalManagerByEmail() {
+	// 	List<RegionalManager> managers = entityManager.createQuery(
+	// 		"select r from RegionalManager r where r.email = 'jh@domain'",
+	// 		RegionalManager.class).getResultList();
+	// 	System.out.println(managers.get(0));
+	// }
+	// @Test
+	// @Order(35)
+	// public void findRegionalManagerByDateOfBirth() {
+	// 	List<RegionalManager> managers = entityManager.createQuery(
+	// 		"select r from RegionalManager r where r.dateOfBirth = '1994-09-09'",
+	// 		RegionalManager.class).getResultList();
+	// 	System.out.println(managers.get(0));
+	// }
+	// @Test
+	// @Order(36)
+	// public void findRegionalManagerByPhoneNo() {
+	// 	List<RegionalManager> managers = entityManager.createQuery(
+	// 		"select r from RegionalManager r where r.phoneNo = '2020000000'",
+	// 		RegionalManager.class).getResultList();
+	// 	System.out.println(managers.get(0));
+	// }
+	// @Test
+	// @Order(37)
+	// public void findOwnerByName() {
+	// 	List<Owner> owners = entityManager.createQuery(
+	// 		"select o from Owner o where o.name = 'Richard Hendrix'",
+	// 		Owner.class).getResultList();
+	// 	System.out.println(owners.get(0));
+	// }
+	// @Test
+	// @Order(38)
+	// public void findOwnerByEmail() {
+	// 	List<Owner> owners = entityManager.createQuery(
+	// 		"select o from Owner o where o.email = 'dinesh@domain'",
+	// 		Owner.class).getResultList();
+	// 	System.out.println(owners.get(0));
+	// }
+	// @Test
+	// @Order(39)
+	// public void findOwnerByDateOfBirth() {
+	// 	List<Owner> owners = entityManager.createQuery(
+	// 		"select o from Owner o where o.dateOfBirth = '1987-05-29'",
+	// 		Owner.class).getResultList();
+	// 	System.out.println(owners.get(0));
+	// }
+	// @Test
+	// @Order(40)
+	// public void findOwnerByPhoneNo() {
+	// 	List<Owner> owners = entityManager.createQuery(
+	// 		"select o from Owner o where o.phoneNo = '415-500-0004'",
+	// 		Owner.class).getResultList();
+	// 	System.out.println(owners.get(0));
+	// }
+	// BoardMember bm1 = new BoardMember(351, "Joe Sanchez", "joe@domain", "1991-09-09", "4150000000", "Candy and Cookies", true);
+	// @Test
+	// @Order(41)
+	// public void findBoardMemberByNameEmailDoBPhoneNo() {
+	// 	List<BoardMember> boardMembers = entityManager.createQuery(
+	// 		"select b from BoardMember b where b.name = 'Joe Sanchez' and b.email = 'joe@domain' and b.dateOfBirth = '1991-09-09' and b.phoneNo = '4150000000'",
+	// 		BoardMember.class).getResultList();
+	// 	System.out.println(boardMembers.get(0));
+	// }
+	// @Test
+	// @Order(42)
+	// public void findBoardMemberHasDegree() {
+	// 	List<BoardMember> boardMembers = entityManager.createQuery(
+	// 		"select b from BoardMember b where b.hasDegree = true",
+	// 		BoardMember.class).getResultList();
+	// 	System.out.println(boardMembers.get(0));
+	// }
+	// @Test
+	// @Order(43)
+	// public void findBoardMemberBoardStrategy() {
+	// 	List<BoardMember> boardMembers = entityManager.createQuery(
+	// 		"select b from BoardMember b where b.boardStrategy = 'Beers and Booze'",
+	// 		BoardMember.class).getResultList();
+	// 	System.out.println(boardMembers.get(0));
+	// }
+
+
 
 
 }
