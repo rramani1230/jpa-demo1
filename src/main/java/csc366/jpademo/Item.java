@@ -31,15 +31,6 @@ public class Item {
      @ManyToMany
      private List<Receipt> receipts = new ArrayList<>();
 
-     @NotNull
-     @ManyToMany(mappedBy = "items")
-     private List<Shipment> shipments = new ArrayList<>();
-
-     @NotNull
-     @ManyToMany(mappedBy = "items")
-     private List<Inventory> inventories = new ArrayList<>();
-
-
      public Item (int itemId, String itemName, double itemCost, boolean prepackaged) {
           this.itemId = itemId;
           this.itemName = itemName;

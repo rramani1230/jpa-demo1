@@ -15,22 +15,22 @@ public class Receipt {
 
      @Id
      @NotNull
+     @GeneratedValue(strategy=GenerationType.AUTO)
      private int receiptId;
 
      @NotNull
      private Date date;
 
-     @NotNull
-     @ManyToMany(mappedBy = "receipts")
-     private List<Customer> customers = new ArrayList<>();
+     @ManyToOne
+     private Customer customer;
 
-     @NotNull
      @ManyToMany(mappedBy = "receipts")
      private List<Item> items = new ArrayList<>();
 
-     @NotNull
      @ManyToMany(mappedBy = "receipts")
      private List<Store> store = new ArrayList<>();
+
+
 
 
      public int getReceiptId() {
@@ -49,12 +49,12 @@ public class Receipt {
           this.date = date;
      }
 
-     public List<Customer> getCustomers() {
-          return this.customers;
+     public Customer getCustomer() {
+          return this.customer;
      }
 
-     public void setCustomers(List<Customer> customers) {
-          this.customers = customers;
+     public void setCustomer(Customer customers) {
+          this.customer = customer;
      }
 
      public List<Item> getItems() {

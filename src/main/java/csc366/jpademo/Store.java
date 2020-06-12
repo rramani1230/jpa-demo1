@@ -24,14 +24,12 @@ public class Store {
      @NotNull
      private String county;
 
-     @OneToOne
-     private Inventory inventory;
+     private int inventory;
 
      @ManyToMany(fetch = FetchType.LAZY)
      private List<Owner> owners = new ArrayList<>();
- 
-     @OneToOne
-     private LocationManager locationManager;
+
+     private int locationManager;
 
      @ManyToMany
      private List<Receipt> receipts = new ArrayList<>();
@@ -39,13 +37,15 @@ public class Store {
      @NotNull
      @OneToMany
      private List<Shipment> shipments = new ArrayList<>();
-     
 
-     public Store (int storeId, String address, String county, Inventory inventory) {
+
+     public Store (int storeId, String address, String county, int inventory,
+     int locationManager) {
           this.storeId = storeId;
           this.address = address;
           this.county = county;
           this.inventory = inventory;
+          this.locationManager = locationManager;
      }
 
      // owners to a store are like shareholders to a stock
@@ -60,12 +60,12 @@ public class Store {
      public void setOwners (List<Owner> owners) {
           this.owners = owners;
      }
-   
-     public void setLocationManager(LocationManager lm) {
+
+     public void setLocationManager(int lm) {
           this.locationManager = lm;
      }
-    
-     public LocationManager getLocationManager() {
+
+     public int getLocationManager() {
           return this.locationManager;
      }
 
@@ -109,11 +109,11 @@ public class Store {
           this.shipments = shipments;
      }
 
-     public Inventory getInteventory () {
+     public int getInteventory () {
           return this.inventory;
      }
 
-     public void setInventory (Inventory inventory) {
+     public void setInventory (int inventory) {
           this.inventory = inventory;
      }
 }

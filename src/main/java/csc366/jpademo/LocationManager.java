@@ -7,25 +7,22 @@ import javax.validation.constraints.NotNull;
 @Entity(name="LocationManager")
 public class LocationManager extends Manager{
 
-     @NotNull
-     private int id;
-
      @ManyToOne
      private RegionalManager regionalManager;
      // @OneToOne(mappedBy = "storeId")
-     @OneToOne
-     private Store store;
-    
+
+     private int store;
+
      public LocationManager (int id, String name, String email,
      String dateOfBirth, String phoneNo) {
           super(id,name,email,dateOfBirth,phoneNo);
      }
-   
-    public Store getStore() {
+
+    public int getStore() {
          return this.store;
     }
-   
-    public void setStore(Store s) {
+
+    public void setStore(int s) {
          this.store = s;
     }
 

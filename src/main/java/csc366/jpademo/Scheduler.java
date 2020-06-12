@@ -9,44 +9,62 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "Scheduler",
-uniqueConstraints = @UniqueConstraint(columnNames={
-     "employeeId"
-}))
-
+@Table(name = "Scheduler")
 public class Scheduler {
 
      @Id
-     @NotNull
-     private int employeeId;
+     @GeneratedValue(strategy=GenerationType.AUTO)
+     private int entry;
 
-     @NotNull
+     private int employee;
+     private int store;
      private String week;
+     private double hours;
 
-     @NotNull
-     private int hours;
-
-     public int getEmployeeId () {
-          return this.employeeId;
-     }
-
-     public void setEmployeeId (int employeeId) {
-          this.employeeId = employeeId;
-     }
-
-     public String getWeek () {
-          return this.week;
-     }
-
-     public void setWeek (String week) {
+     public Scheduler (int employee, int store, String week, double hours) {
+          this.employee = employee;
+          this.store = store;
           this.week = week;
-     }
-
-     public int getHours () {
-          return this.hours;
-     }
-
-     public void setHours (int hours) {
           this.hours = hours;
+     }
+
+	public int getEntry() {
+		return entry;
+	}
+
+	public void setEntry(int entry) {
+		this.entry = entry;
+	}
+
+	public int getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(int employee) {
+		this.employee = employee;
+	}
+
+	public String getWeek() {
+		return week;
+	}
+
+	public void setWeek(String week) {
+		this.week = week;
+	}
+
+	public double getHours() {
+		return hours;
+	}
+
+	public void setHours(double hours) {
+		this.hours = hours;
+	}
+
+     public int getStore () {
+          return store;
+     }
+
+     public void setStore () {
+          this.store = store;
      }
 }

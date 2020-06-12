@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
        uniqueConstraints = @UniqueConstraint(columnNames={"id"})
 )
 public class Customer extends CompanyPerson{
-     
+
      @NotNull
      private boolean truck_driver;
      @NotNull
@@ -20,14 +20,14 @@ public class Customer extends CompanyPerson{
      @NotNull
      private int favorite_item;
 
-     @ManyToMany
+     @OneToMany
      // private List<Receipt> receipts = new ArrayList<>();
      private List<Receipt> receipts = new ArrayList<>();
 
      /* Insert foreign key for home store and favorite items */
 
      public Customer (int id, String name, String email,
-     String dateOfBirth, String phoneNo, boolean truck_driver, 
+     String dateOfBirth, String phoneNo, boolean truck_driver,
      int home_store, int favorite_item) {
           super(id,name,email,dateOfBirth,phoneNo);
           this.truck_driver = truck_driver;
